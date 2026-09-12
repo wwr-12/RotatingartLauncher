@@ -1,1 +1,1 @@
-"# RotatingartLauncher" 
+RotatingartLauncher 优化版本，著作权归原作者所有

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 深色模式背景 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:startColor="#1C1B1F"
+        android:centerColor="#1A191D"
+        android:endColor="#121212"
+        android:angle="135" />
+</shape>

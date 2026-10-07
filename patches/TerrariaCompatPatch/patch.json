@@ -1,0 +1,17 @@
+{
+  "id": "com.app.ralaunch.terraria.compat",
+  "name": "Terraria 原版兼容补丁 (.NET Framework + FNA on CoreCLR)",
+  "description": "让 GOG Linux 版原版 Terraria.exe（.NET Framework 4.0 + FNA IL）在启动器 .NET 10 CoreCLR 上运行：随补丁供应 System.Windows.Forms 桩程序集、按需动态兜底、打桩 Android 缺失的 API。需配合 libSDL3.so 原生库使用。",
+  "version": "0.3.0",
+  "author": "RA Launcher Team",
+  "dllFileName": "TerrariaCompatPatch.dll",
+  "entryPoint": {
+    "typeName": "TerrariaCompatPatch.Patcher",
+    "methodName": "Initialize"
+  },
+  "targetGames": [
+    "Terraria"
+  ],
+  "priority": 250,
+  "enabled": true
+}

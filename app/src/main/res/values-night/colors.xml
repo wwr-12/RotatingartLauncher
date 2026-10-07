@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material Design 3 暗色主题颜色系统 -->
+
+    <!-- 主色调 (Primary) -->
+    <color name="md_theme_dark_primary">#D0BCFF</color>
+    <color name="md_theme_dark_onPrimary">#381E72</color>
+    <color name="md_theme_dark_primaryContainer">#4F378B</color>
+    <color name="md_theme_dark_onPrimaryContainer">#EADDFF</color>
+
+    <!-- 次色调 (Secondary) -->
+    <color name="md_theme_dark_secondary">#CCC2DC</color>
+    <color name="md_theme_dark_onSecondary">#332D41</color>
+    <color name="md_theme_dark_secondaryContainer">#4A4458</color>
+    <color name="md_theme_dark_onSecondaryContainer">#E8DEF8</color>
+
+    <!-- 三级色 (Tertiary) -->
+    <color name="md_theme_dark_tertiary">#81C784</color>
+    <color name="md_theme_dark_onTertiary">#2E7D32</color>
+    <color name="md_theme_dark_tertiaryContainer">#388E3C</color>
+    <color name="md_theme_dark_onTertiaryContainer">#C8E6C9</color>
+
+    <!-- 错误色 (Error) -->
+    <color name="md_theme_dark_error">#F2B8B5</color>
+    <color name="md_theme_dark_errorContainer">#8C1D18</color>
+    <color name="md_theme_dark_onError">#601410</color>
+    <color name="md_theme_dark_onErrorContainer">#F9DEDC</color>
+
+    <!-- 背景色 (Background) -->
+    <color name="md_theme_dark_background">#1C1B1F</color>
+    <color name="md_theme_dark_onBackground">#E6E1E5</color>
+
+    <!-- 表面色 (Surface) -->
+    <color name="md_theme_dark_surface">#1C1B1F</color>
+    <color name="md_theme_dark_onSurface">#E6E1E5</color>
+    <color name="md_theme_dark_surfaceVariant">#49454F</color>
+    <color name="md_theme_dark_onSurfaceVariant">#CAC4D0</color>
+
+    <!-- 轮廓线 (Outline) -->
+    <color name="md_theme_dark_outline">#938F99</color>
+    <color name="md_theme_dark_outlineVariant">#49454F</color>
+
+    <!-- 深色主题颜色（向后兼容） -->
+    <!-- 背景色 -->
+    <color name="background_primary">#1C1B1F</color>
+    <color name="background_secondary">#121212</color>
+    <color name="background_card">#1D1D1D</color>
+    <color name="background_sidebar">#0D0D0D</color>
+    <color name="background_dark">#000000</color>
+
+    <!-- 文本颜色 -->
+    <color name="text_primary">#E6E1E5</color>
+    <color name="text_secondary">#CAC4D0</color>
+    <color name="text_hint">#938F99</color>
+
+    <!-- 分隔线 -->
+    <color name="divider">#49454F</color>
+    
+    <!-- 按钮颜色 -->
+    <color name="button_secondary">#2A2A2A</color>
+    <color name="button_disabled">#404040</color>
+    
+    <!-- 选中状态（带紫色） -->
+    <color name="selected_item_background">#30BB86FC</color>
+    
+    <!-- 强调色（紫色系 - 参考 FNALaunch） -->
+    <color name="accent_primary">#BB86FC</color>
+    <color name="accent_primary_light">#40BB86FC</color>
+    <color name="accent_secondary">#9965F4</color>
+    
+    <!-- 渐变色（用于背景） -->
+    <color name="gradient_dark_start">#000000</color>
+    <color name="gradient_dark_end">#1A1A1A</color>
+    
+    <!-- Snackbar 颜色 - 深色主题 -->
+    <color name="snackbar_success">#1B5E20</color>
+    <color name="snackbar_success_stroke">#4CAF50</color>
+    <color name="snackbar_error">#B71C1C</color>
+    <color name="snackbar_error_stroke">#F44336</color>
+    <color name="snackbar_info">#0D47A1</color>
+    <color name="snackbar_info_stroke">#2196F3</color>
+    
+    <!-- 按钮颜色 -->
+    <color name="delete_button_bg">#D32F2F</color>
+    <color name="ripple_error">#80D32F2F</color>
+</resources>

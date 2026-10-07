@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <OutputType>Library</OutputType>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <!-- 桩程序集名与 Terraria.exe 的 AssemblyRef 对齐（PKT 不一致由 AssemblyResolve 容忍） -->
+    <AssemblyName>System.Windows.Forms</AssemblyName>
+    <RootNamespace>System.Windows.Forms</RootNamespace>
+    <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+</Project>

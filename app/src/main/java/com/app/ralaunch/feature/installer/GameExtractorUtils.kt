@@ -1,0 +1,183 @@
+package com.app.ralaunch.feature.installer
+
+import com.app.ralaunch.R
+import com.app.ralaunch.RaLaunchApp
+import com.app.ralaunch.core.extractor.BasicSevenZipExtractor
+import com.app.ralaunch.core.extractor.ExtractorCollection
+import com.app.ralaunch.core.extractor.GogShFileExtractor
+import com.app.ralaunch.core.logging.AppLog
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import java.io.File
+import java.nio.file.Path
+import java.nio.file.Paths
+
+/**
+ * 游戏解压工具类
+ * 封装 ralib 中现有的解压实现
+ */
+object GameExtractorUtils {
+    private const val TAG = "GameExtractorUtils"
+
+    /**
+     * 解析 GOG .sh 文件，获取游戏信息
+     */
+    suspend fun parseGogShFile(shFile: File): GogGameInfo? = withContext(Dispatchers.IO) {
+        try {
+            val gdzf = GogShFileExtractor.GameDataZipFile.parseFromGogShFile(shFile.toPath())
+            if (gdzf != null) {
+                GogGameInfo(
+                    id = gdzf.id ?: "",
+                    version = gdzf.version ?: "",
+                    build = gdzf.build,
+                    locale = gdzf.locale
+                )
+            } else {
+                null
+            }
+        } catch (e: Exception) {
+            AppLog.e(TAG, "Failed to parse GOG .sh file", e)
+            null
+        }
+    }
+
+    /**
+     * 解压 GOG .sh 文件
+     */
+    suspend fun extractGogSh(
+        shFile: File,
+        outputDir: File,
+        progressCallback: (String, Float) -> Unit
+    ): ExtractResult = withContext(Dispatchers.IO) {
+        try {
+            val state = HashMap<String, Any>()
+            var gamePath: Path? = null
+            var success = false
+            var errorMsg: String? = null
+
+            val extractor = GogShFileExtractor(
+                shFile.toPath(),
+                outputDir.toPath(),
+                object : ExtractorCollection.ExtractionListener {
+                    override fun onProgress(message: String, progress: Float, state: HashMap<String, Any?>?) {
+                        progressCallback(message, progress)
+                    }
+
+                    override fun onComplete(message: String, state: HashMap<String, Any?>?) {
+                        success = true
+                        gamePath = state?.get(GogShFileExtractor.STATE_KEY_GAME_PATH) as? Path
+                    }
+
+                    override fun onError(message: String, ex: Exception?, state: HashMap<String, Any?>?) {
+                        errorMsg = message
+                    }
+                }
+            )
+            extractor.state = HashMap(state)
+
+            val result = extractor.extract()
+
+            if (result && success) {
+                ExtractResult.Success(gamePath?.toFile() ?: outputDir)
+            } else {
+                ExtractResult.Error(
+                    errorMsg ?: RaLaunchApp.getInstance().getString(R.string.extract_failed)
+                )
+            }
+
+        } catch (e: Exception) {
+            AppLog.e(TAG, "Failed to extract GOG .sh file", e)
+            ExtractResult.Error(
+                e.message ?: RaLaunchApp.getInstance().getString(R.string.extract_failed)
+            )
+        }
+    }
+
+    /**
+     * 解压 ZIP 文件
+     * @param zipFile ZIP 文件
+     * @param outputDir 输出目录
+     * @param progressCallback 进度回调
+     * @param sourcePrefix 源路径前缀（用于只解压 ZIP 中的特定目录）
+     */
+    suspend fun extractZip(
+        zipFile: File,
+        outputDir: File,
+        progressCallback: (String, Float) -> Unit,
+        sourcePrefix: String = ""
+    ): ExtractResult = withContext(Dispatchers.IO) {
+        try {
+            val state = HashMap<String, Any>()
+            var success = false
+            var errorMsg: String? = null
+
+            val listener = object : ExtractorCollection.ExtractionListener {
+                override fun onProgress(message: String, progress: Float, state: HashMap<String, Any?>?) {
+                    progressCallback(message, progress)
+                }
+
+                override fun onComplete(message: String, state: HashMap<String, Any?>?) {
+                    success = true
+                }
+
+                override fun onError(message: String, ex: Exception?, state: HashMap<String, Any?>?) {
+                    errorMsg = message
+                }
+            }
+
+            val extractor = BasicSevenZipExtractor(
+                zipFile.toPath(),
+                Paths.get(sourcePrefix),
+                outputDir.toPath(),
+                listener
+            )
+            extractor.state = HashMap(state)
+
+            val result = extractor.extract()
+
+            if (result && success) {
+                ExtractResult.Success(outputDir)
+            } else {
+                ExtractResult.Error(
+                    errorMsg ?: RaLaunchApp.getInstance().getString(R.string.extract_failed)
+                )
+            }
+
+        } catch (e: Exception) {
+            AppLog.e(TAG, "Failed to extract ZIP file", e)
+            ExtractResult.Error(
+                e.message ?: RaLaunchApp.getInstance().getString(R.string.extract_failed)
+            )
+        }
+    }
+
+    /**
+     * 在解压目录中查找包含指定程序集的根目录
+     * 用于从 ZIP / Windows 安装包解压结果中定位 Terraria.exe / tModLoader.dll 所在目录，
+     * 兼容扁平结构与嵌套目录（未来同结构版本自动适用）
+     */
+    fun findAssemblyRoot(extractedDir: File, assemblyName: String): File {
+        return extractedDir.walkTopDown()
+            .firstOrNull { it.isFile && it.name.equals(assemblyName, ignoreCase = true) }
+            ?.parentFile
+            ?: extractedDir
+    }
+
+    /**
+     * GOG 游戏信息
+     */
+    data class GogGameInfo(
+        val id: String,
+        val version: String,
+        val build: String? = null,
+        val locale: String? = null
+    )
+
+    /**
+     * 解压结果
+     */
+    sealed class ExtractResult {
+        data class Success(val outputDir: File) : ExtractResult()
+        data class Error(val message: String) : ExtractResult()
+    }
+}

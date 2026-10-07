@@ -1,0 +1,734 @@
+package com.app.ralaunch.feature.main.vm
+
+import android.content.Context
+import android.content.pm.PackageManager
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.app.ralaunch.core.common.GameLaunchManager
+import com.app.ralaunch.core.common.SettingsAccess
+import com.app.ralaunch.core.common.util.HttpFileDownloader
+import com.app.ralaunch.core.common.util.HttpRangeDownloader
+import com.app.ralaunch.core.logging.AppLog
+import com.app.ralaunch.R
+import com.app.ralaunch.core.di.contract.IGameRepositoryServiceV3
+import com.app.ralaunch.core.di.contract.ISettingsRepositoryServiceV2
+import com.app.ralaunch.core.navigation.NavDestination
+import com.app.ralaunch.core.navigation.NavigationEvent
+import com.app.ralaunch.core.model.GameItem
+import com.app.ralaunch.core.model.GameItemUi
+import com.app.ralaunch.core.model.applyFromUiModel
+import com.app.ralaunch.core.model.toUiModels
+import com.app.ralaunch.feature.announcement.AnnouncementRepositoryService
+import com.app.ralaunch.feature.gog.domain.ModLoaderVersionFetcher
+import com.app.ralaunch.feature.installer.ModLoaderInPlaceUpdater
+import com.app.ralaunch.feature.installer.contract.ModLoaderDownloadUiState
+import com.app.ralaunch.feature.installer.contract.ModLoaderDownloadVersion
+import com.app.ralaunch.feature.main.contracts.AppUpdateUiModel
+import com.app.ralaunch.feature.main.contracts.ForceAnnouncementUiModel
+import com.app.ralaunch.feature.main.contracts.MainUiEffect
+import com.app.ralaunch.feature.main.contracts.MainUiEvent
+import com.app.ralaunch.feature.main.contracts.MainUiState
+import com.app.ralaunch.feature.main.update.LauncherUpdateChecker
+import com.app.ralaunch.feature.main.update.LauncherUpdateInfo
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.io.File
+import java.io.IOException
+import java.util.concurrent.atomic.AtomicBoolean
+import android.os.Environment
+
+class MainViewModel(
+    private val appContext: Context,
+    private val gameRepository: IGameRepositoryServiceV3,
+    private val gameLaunchManager: GameLaunchManager,
+    private val settingsRepository: ISettingsRepositoryServiceV2,
+    private val announcementRepositoryService: AnnouncementRepositoryService,
+    private val launcherUpdateChecker: LauncherUpdateChecker
+) : ViewModel() {
+
+    private val _uiState = MutableStateFlow(MainUiState())
+    val uiState: StateFlow<MainUiState> = _uiState.asStateFlow()
+
+    private val _effects = MutableSharedFlow<MainUiEffect>()
+    val effects: SharedFlow<MainUiEffect> = _effects.asSharedFlow()
+
+    private val gameItemsMap = mutableMapOf<String, GameItem>()
+    private var isUpdateCheckInProgress = false
+    private var lastUpdateCheckAt: Long = 0L
+    private var latestAnnouncementId: String? = null
+
+    // tModLoader 就地更新：独立取消令牌 + 会话计数（与安装器下载同款会话隔离，
+    // 防止取消后旧任务的采样器因标志复位而"复活"导致进度叠加跳动）
+    @Volatile private var modLoaderUpdateToken = AtomicBoolean(false)
+    @Volatile private var modLoaderUpdateSession = 0
+    private var modLoaderUpdateJob: Job? = null
+
+    companion object {
+        private const val TAG = "MainViewModel"
+        private const val UPDATE_CHECK_INTERVAL_MS = 60_000L
+
+        /** 超过此大小（16MB）的更新包走多线程分段下载 */
+        private const val RANGE_DOWNLOAD_THRESHOLD = 16L * 1024 * 1024
+    }
+
+    init {
+        observeGames()
+        onEvent(MainUiEvent.CheckAppUpdate)
+        loadAnnouncementBadgeFromSettings()
+        checkAnnouncementUnreadOnStartup()
+    }
+
+    fun onEvent(event: MainUiEvent) {
+        when (event) {
+            is MainUiEvent.CheckAppUpdate -> checkAppUpdate()
+            is MainUiEvent.CheckAppUpdateManually -> checkAppUpdate(
+                force = true,
+                fromUserAction = true
+            )
+            is MainUiEvent.GameSelected -> selectGame(event.game.id)
+            is MainUiEvent.GameEdited -> updateGame(event.game)
+            is MainUiEvent.LaunchRequested -> launchSelectedGame()
+            is MainUiEvent.DeleteRequested -> requestDeleteSelectedGame()
+            is MainUiEvent.DeleteDialogDismissed -> dismissDeleteDialog()
+            is MainUiEvent.DeleteConfirmed -> confirmDelete()
+            is MainUiEvent.UpdateDialogDismissed -> dismissUpdateDialog()
+            is MainUiEvent.UpdateIgnoreClicked -> ignoreCurrentUpdate()
+            is MainUiEvent.UpdateActionClicked -> openUpdateUrl()
+            is MainUiEvent.UpdateCloudActionClicked -> openCloudUpdateUrl()
+            is MainUiEvent.AppResumed -> {
+                _uiState.update { it.copy(isVideoPlaying = true) }
+                checkAppUpdate(force = false)
+            }
+            is MainUiEvent.AppPaused -> _uiState.update { it.copy(isVideoPlaying = false) }
+            is MainUiEvent.AnnouncementTabOpened -> markAnnouncementsAsRead()
+            is MainUiEvent.AnnouncementPopupLearnMoreClicked -> markAnnouncementsAsRead()
+            is MainUiEvent.AnnouncementPopupViewClicked -> openAnnouncementScreen()
+            is MainUiEvent.ShowModLoaderUpdate -> showModLoaderUpdate()
+            is MainUiEvent.DismissModLoaderUpdate -> dismissModLoaderUpdate()
+            is MainUiEvent.RefreshModLoaderUpdateVersions -> fetchModLoaderUpdateVersions(forceRefresh = true)
+            is MainUiEvent.SelectModLoaderUpdateVersion -> updateModLoaderUpdate {
+                it.copy(selectedVersion = event.version, downloadError = null)
+            }
+            is MainUiEvent.DownloadModLoaderUpdateVersion -> downloadModLoaderUpdate(event.version)
+            is MainUiEvent.CancelModLoaderUpdateDownload -> cancelModLoaderUpdate()
+            is MainUiEvent.ToggleModLoaderUpdateMirror -> updateModLoaderUpdate {
+                it.copy(useMirror = event.enabled)
+            }
+        }
+    }
+
+    private fun observeGames() {
+        viewModelScope.launch {
+            gameRepository.games.collectLatest { games ->
+                val distinctGames = games.distinctBy { it.id }
+                gameItemsMap.clear()
+                distinctGames.forEach { game ->
+                    gameItemsMap[game.id] = game
+                }
+
+                val uiGames = distinctGames.toUiModels()
+                _uiState.update { state ->
+                    val selectedGameId = state.selectedGame?.id
+                    val pendingDeletionId = state.gamePendingDeletion?.id
+                    state.copy(
+                        games = uiGames,
+                        selectedGame = selectedGameId?.let { id ->
+                            uiGames.find { it.id == id }
+                        },
+                        gamePendingDeletion = pendingDeletionId?.let { id ->
+                            uiGames.find { it.id == id }
+                        },
+                        deletePosition = pendingDeletionId?.let { id ->
+                            uiGames.indexOfFirst { it.id == id }.takeIf { it >= 0 } ?: -1
+                        } ?: -1,
+                        isLoading = false
+                    )
+                }
+            }
+        }
+    }
+
+    private fun checkAnnouncementUnreadOnStartup() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = announcementRepositoryService.fetchAnnouncements(forceRefresh = false)
+            result.onSuccess { announcements ->
+                val latestAnnouncement = announcements.firstOrNull()
+                val latestId = latestAnnouncement
+                    ?.id
+                    ?.trim()
+                    ?.takeIf { it.isNotBlank() }
+                latestAnnouncementId = latestId
+
+                val settings = settingsRepository.getSettingsSnapshot()
+                val lastAnnouncementId = settings.lastAnnouncementId.trim()
+                val shouldShowBadge = latestId != null && latestId != lastAnnouncementId
+                if (settings.isAnnouncementBadgeShown != shouldShowBadge) {
+                    runCatching {
+                        settingsRepository.update {
+                            isAnnouncementBadgeShown = shouldShowBadge
+                        }
+                    }.onFailure { error ->
+                        AppLog.w(
+                            "MainViewModel",
+                            "Failed to persist isAnnouncementBadgeShown: ${error.message}",
+                            error
+                        )
+                    }
+                }
+
+                val forceAnnouncement = latestAnnouncement
+                    ?.takeIf { shouldShowBadge }
+                    ?.let { latest ->
+                        val announcementId = latest.id.trim()
+                        if (announcementId.isBlank()) {
+                            null
+                        } else {
+                            val markdown = announcementRepositoryService.fetchAnnouncementMarkdown(
+                                announcementId = announcementId,
+                                forceRefresh = false
+                            ).getOrNull()
+
+                            ForceAnnouncementUiModel(
+                                announcementId = announcementId,
+                                title = latest.title,
+                                publishedAt = latest.publishedAt,
+                                tags = latest.tags,
+                                markdown = markdown
+                            )
+                        }
+                    }
+
+                withContext(Dispatchers.Main) {
+                    _uiState.update {
+                        it.copy(
+                            showAnnouncementBadge = shouldShowBadge,
+                            forceAnnouncement = forceAnnouncement
+                        )
+                    }
+                }
+            }.onFailure { error ->
+                AppLog.w(
+                    "MainViewModel",
+                    "Failed to fetch announcements on startup: ${error.message}",
+                    error
+                )
+            }
+        }
+    }
+
+    private fun loadAnnouncementBadgeFromSettings() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val shouldShowBadge = runCatching {
+                settingsRepository.getSettingsSnapshot().isAnnouncementBadgeShown
+            }.getOrDefault(false)
+            withContext(Dispatchers.Main) {
+                _uiState.update { it.copy(showAnnouncementBadge = shouldShowBadge) }
+            }
+        }
+    }
+
+    private fun markAnnouncementsAsRead() {
+        val state = _uiState.value
+        if (!state.showAnnouncementBadge && state.forceAnnouncement == null) return
+
+        val latestId = latestAnnouncementId
+            ?.trim()
+            ?.takeIf { it.isNotBlank() }
+
+        viewModelScope.launch(Dispatchers.IO) {
+            runCatching {
+                settingsRepository.update {
+                    isAnnouncementBadgeShown = false
+                    if (latestId != null) {
+                        lastAnnouncementId = latestId
+                    }
+                }
+            }.onFailure { error ->
+                AppLog.w(
+                    "MainViewModel",
+                    "Failed to persist announcement read state: ${error.message}",
+                    error
+                )
+            }
+            withContext(Dispatchers.Main) {
+                _uiState.update {
+                    it.copy(
+                        showAnnouncementBadge = false,
+                        forceAnnouncement = null
+                    )
+                }
+            }
+        }
+    }
+
+    private fun selectGame(gameId: String) {
+        val selected = _uiState.value.games.find { it.id == gameId } ?: return
+        _uiState.update { it.copy(selectedGame = selected) }
+    }
+
+    private fun updateGame(updatedGameUi: com.app.ralaunch.core.model.GameItemUi) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val game = gameItemsMap[updatedGameUi.id] ?: return@launch
+            game.applyFromUiModel(updatedGameUi)
+            val index = gameRepository.games.value.indexOfFirst { it.id == game.id }
+            if (index >= 0) {
+                gameRepository.upsert(game, index)
+            }
+        }
+    }
+
+    private fun requestDeleteSelectedGame() {
+        if (_uiState.value.isDeletingGame) return
+        val selectedGame = _uiState.value.selectedGame
+        if (selectedGame == null) {
+            emitEffect(MainUiEffect.ShowToast(appContext.getString(R.string.main_select_game_first)))
+            return
+        }
+        val deletePosition = _uiState.value.games.indexOfFirst { it.id == selectedGame.id }
+        _uiState.update {
+            it.copy(
+                gamePendingDeletion = selectedGame,
+                deletePosition = deletePosition
+            )
+        }
+    }
+
+    private fun dismissDeleteDialog() {
+        if (_uiState.value.isDeletingGame) return
+        _uiState.update {
+            it.copy(
+                gamePendingDeletion = null,
+                deletePosition = -1,
+                isDeletingGame = false
+            )
+        }
+    }
+
+    private fun confirmDelete() {
+        if (_uiState.value.isDeletingGame) return
+        val pendingGame = _uiState.value.gamePendingDeletion ?: return
+        _uiState.update { it.copy(isDeletingGame = true) }
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val game = gameItemsMap[pendingGame.id]
+                if (game == null) {
+                    emitEffect(MainUiEffect.ShowToast(appContext.getString(R.string.error_operation_failed)))
+                    withContext(Dispatchers.Main) {
+                        _uiState.update {
+                            it.copy(
+                                gamePendingDeletion = null,
+                                deletePosition = -1
+                            )
+                        }
+                    }
+                    return@launch
+                }
+
+                val filesDeleted = gameRepository.deleteGameFiles(game)
+                gameRepository.removeById(game.id)
+
+                if (filesDeleted) {
+                    emitEffect(MainUiEffect.ShowSuccess(appContext.getString(R.string.main_game_deleted)))
+                } else {
+                    emitEffect(MainUiEffect.ShowToast(appContext.getString(R.string.main_game_deleted_partial)))
+                }
+            } catch (_: Exception) {
+                emitEffect(MainUiEffect.ShowToast(appContext.getString(R.string.error_operation_failed)))
+            } finally {
+                withContext(Dispatchers.Main) {
+                    _uiState.update { it.copy(isDeletingGame = false) }
+                }
+            }
+        }
+    }
+
+    private fun launchSelectedGame() {
+        val selectedGame = _uiState.value.selectedGame
+        if (selectedGame == null) {
+            emitEffect(MainUiEffect.ShowToast(appContext.getString(R.string.main_select_game_first)))
+            return
+        }
+
+        val game = gameItemsMap[selectedGame.id]
+        if (game == null) {
+            emitEffect(MainUiEffect.ShowToast(appContext.getString(R.string.main_select_game_first)))
+            return
+        }
+
+        viewModelScope.launch {
+            val success = withContext(Dispatchers.Main) {
+                gameLaunchManager.launchGame(game)
+            }
+            if (!success) {
+                emitEffect(MainUiEffect.ShowToast(appContext.getString(R.string.game_launch_failed)))
+                return@launch
+            }
+            if (SettingsAccess.isKillLauncherUIAfterLaunch) {
+                emitEffect(MainUiEffect.ExitLauncher)
+            }
+        }
+    }
+
+    private fun openAnnouncementScreen() {
+        emitEffect(
+            MainUiEffect.Navigate(
+                NavigationEvent.NavigateToDestination(NavDestination.ANNOUNCEMENTS)
+            )
+        )
+        markAnnouncementsAsRead()
+    }
+
+    // ==================== tModLoader 就地更新 ====================
+
+    private fun updateModLoaderUpdate(
+        transform: (ModLoaderDownloadUiState) -> ModLoaderDownloadUiState
+    ) {
+        _uiState.update { it.copy(modLoaderUpdate = transform(it.modLoaderUpdate)) }
+    }
+
+    private fun showModLoaderUpdate() {
+        val selected = _uiState.value.selectedGame ?: run {
+            emitEffect(MainUiEffect.ShowToast(appContext.getString(R.string.main_select_game_first)))
+            return
+        }
+        val game = gameItemsMap[selectedGameId(selected)] ?: run {
+            emitEffect(MainUiEffect.ShowToast(appContext.getString(R.string.main_select_game_first)))
+            return
+        }
+        if (game.gameId != "tModLoader") {
+            emitEffect(MainUiEffect.ShowToast(appContext.getString(R.string.modloader_update_only_tmodloader)))
+            return
+        }
+        updateModLoaderUpdate {
+            it.copy(isVisible = true, modLoaderName = "tModLoader", downloadError = null)
+        }
+        if (_uiState.value.modLoaderUpdate.versions.isEmpty()) {
+            fetchModLoaderUpdateVersions(forceRefresh = false)
+        }
+    }
+
+    private fun dismissModLoaderUpdate() {
+        if (_uiState.value.modLoaderUpdate.isDownloading) {
+            cancelModLoaderUpdate()
+        } else {
+            modLoaderUpdateJob?.cancel()
+            modLoaderUpdateJob = null
+        }
+        updateModLoaderUpdate { ModLoaderDownloadUiState() }
+    }
+
+    private fun fetchModLoaderUpdateVersions(forceRefresh: Boolean) {
+        val st = _uiState.value.modLoaderUpdate
+        if (!st.isVisible || st.isDownloading || st.isLoadingVersions) return
+        if (!forceRefresh && st.versions.isNotEmpty()) return
+
+        val useMirror = st.useMirror
+        updateModLoaderUpdate { it.copy(isLoadingVersions = true, versionsError = null) }
+
+        modLoaderUpdateJob = viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val versions = ModLoaderVersionFetcher.fetchAllVersions("tModLoader", useMirror)
+                withContext(Dispatchers.Main) {
+                    updateModLoaderUpdate { current ->
+                        val mapped = versions.map {
+                            ModLoaderDownloadVersion(
+                                version = it.version,
+                                displayName = it.displayName,
+                                url = it.url,
+                                fileName = it.fileName,
+                                sizeBytes = it.sizeBytes,
+                                prerelease = it.prerelease,
+                                publishedAt = it.publishedAt
+                            )
+                        }
+                        current.copy(
+                            isLoadingVersions = false,
+                            versionsError = null,
+                            versions = mapped,
+                            selectedVersion = current.selectedVersion
+                                ?: mapped.firstOrNull { v -> !v.prerelease }
+                                ?: mapped.firstOrNull()
+                        )
+                    }
+                }
+            } catch (e: Exception) {
+                AppLog.e(TAG, "获取 tModLoader 版本列表失败", e)
+                withContext(Dispatchers.Main) {
+                    updateModLoaderUpdate {
+                        it.copy(
+                            isLoadingVersions = false,
+                            versionsError = e.message
+                                ?: appContext.getString(R.string.common_unknown_error)
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    private fun downloadModLoaderUpdate(version: ModLoaderDownloadVersion) {
+        val state = _uiState.value
+        if (state.modLoaderUpdate.isDownloading) return
+        val selected = state.selectedGame
+        val game = selected?.let { gameItemsMap[selectedGameId(it)] }
+        if (game == null || game.gameId != "tModLoader") {
+            emitEffect(MainUiEffect.ShowToast(appContext.getString(R.string.modloader_update_only_tmodloader)))
+            return
+        }
+
+        val token = AtomicBoolean(false)
+        modLoaderUpdateToken = token
+        val session = ++modLoaderUpdateSession
+
+        updateModLoaderUpdate {
+            it.copy(
+                selectedVersion = version,
+                isDownloading = true,
+                downloadError = null,
+                downloadingFileName = version.fileName,
+                downloadedBytes = 0,
+                totalBytes = version.sizeBytes,
+                speedBytesPerSecond = 0
+            )
+        }
+
+        val useMirror = _uiState.value.modLoaderUpdate.useMirror
+        modLoaderUpdateJob = viewModelScope.launch(Dispatchers.IO) {
+            var partFile: File? = null
+            try {
+                val downloadDir = File(
+                    Environment.getExternalStorageDirectory(), "RALauncher/ModLoaders"
+                ).apply { mkdirs() }
+                val zipFile = File(downloadDir, "${version.fileName}.part$session")
+                partFile = zipFile
+                val progressCallback: (Long, Long, Long) -> Unit = { downloaded, _, speed ->
+                    if (session == modLoaderUpdateSession) {
+                        updateModLoaderUpdate {
+                            it.copy(
+                                downloadedBytes = downloaded,
+                                totalBytes = if (it.totalBytes > 0) it.totalBytes else version.sizeBytes,
+                                speedBytesPerSecond = speed
+                            )
+                        }
+                    }
+                }
+
+                if (version.sizeBytes >= RANGE_DOWNLOAD_THRESHOLD) {
+                    try {
+                        HttpRangeDownloader.downloadFirstAvailable(
+                            candidates = ModLoaderVersionFetcher.getDownloadCandidateUrls(version.url, useMirror),
+                            targetFile = zipFile,
+                            expectedSize = version.sizeBytes,
+                            onProgress = progressCallback,
+                            isCancelled = { token.get() }
+                        )
+                    } catch (e: HttpRangeDownloader.NotRangeSupportedException) {
+                        AppLog.w(TAG, "无支持分段的镜像，回退单线程下载: ${e.message}")
+                        HttpFileDownloader.download(
+                            url = ModLoaderVersionFetcher.applyGitHubProxy(version.url, useMirror),
+                            targetFile = zipFile,
+                            isCancelled = { token.get() },
+                            onProgress = progressCallback
+                        )
+                    }
+                } else {
+                    HttpFileDownloader.download(
+                        url = ModLoaderVersionFetcher.applyGitHubProxy(version.url, useMirror),
+                        targetFile = zipFile,
+                        isCancelled = { token.get() },
+                        onProgress = progressCallback
+                    )
+                }
+
+                if (token.get()) throw IOException("download cancelled")
+
+                ModLoaderInPlaceUpdater.updateTModLoader(game, zipFile) { msg, pct ->
+                    if (session == modLoaderUpdateSession) {
+                        updateModLoaderUpdate {
+                            it.copy(
+                                // 更新阶段无精确总量，用下载后的剩余区间映射进度条
+                                downloadedBytes = version.sizeBytes * pct / 100L,
+                                totalBytes = version.sizeBytes,
+                                speedBytesPerSecond = 0,
+                                downloadingFileName = msg
+                            )
+                        }
+                    }
+                }
+                // 更新完成后删除下载的 zip（数百 MB，留着只会占满存储）
+                zipFile.delete()
+                partFile = null
+
+                withContext(Dispatchers.Main) {
+                    if (session != modLoaderUpdateSession) return@withContext
+                    updateModLoaderUpdate { ModLoaderDownloadUiState(useMirror = it.useMirror) }
+                    emitEffect(
+                        MainUiEffect.ShowSuccess(
+                            appContext.getString(R.string.modloader_update_success, version.version)
+                        )
+                    )
+                }
+            } catch (e: Exception) {
+                partFile?.delete()
+                AppLog.e(TAG, "tModLoader 更新失败: ${version.version}", e)
+                withContext(Dispatchers.Main + NonCancellable) {
+                    val cancelledByUser = token.get() || e.message?.contains("cancelled", ignoreCase = true) == true
+                    if (session == modLoaderUpdateSession) {
+                        if (cancelledByUser) {
+                            updateModLoaderUpdate { it.copy(isDownloading = false) }
+                        } else {
+                            updateModLoaderUpdate {
+                                it.copy(
+                                    isDownloading = false,
+                                    downloadError = e.message
+                                        ?: appContext.getString(R.string.modloader_update_failed)
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun cancelModLoaderUpdate() {
+        modLoaderUpdateToken.set(true)
+        modLoaderUpdateJob?.cancel()
+        modLoaderUpdateJob = null
+        // 立即回到版本列表；后台收尾幂等
+        updateModLoaderUpdate { it.copy(isDownloading = false, downloadError = null) }
+    }
+
+    /** GameItemUi 与 GameItem 共用存储 ID */
+    private fun selectedGameId(ui: GameItemUi): String = ui.id
+
+    private fun checkAppUpdate(
+        force: Boolean = true,
+        fromUserAction: Boolean = false
+    ) {
+        if (isUpdateCheckInProgress) return
+        if (_uiState.value.availableUpdate != null) return
+        val now = System.currentTimeMillis()
+        if (!force && now - lastUpdateCheckAt < UPDATE_CHECK_INTERVAL_MS) return
+
+        if (fromUserAction) {
+            emitEffect(MainUiEffect.ShowToast("正在检查更新..."))
+        }
+        lastUpdateCheckAt = now
+        isUpdateCheckInProgress = true
+        viewModelScope.launch {
+            try {
+                val currentVersion = resolveCurrentVersionName()
+                val result = launcherUpdateChecker.checkForUpdate(currentVersion)
+
+                result.onSuccess { info ->
+                    if (info == null) {
+                        AppLog.i("MainViewModel", "No update. currentVersion=$currentVersion")
+                        if (fromUserAction) {
+                            emitEffect(MainUiEffect.ShowToast("当前已是最新版本"))
+                        }
+                        return@onSuccess
+                    }
+                    _uiState.update { state ->
+                        state.copy(availableUpdate = info.toAppUpdateUiModel())
+                    }
+                    AppLog.i(
+                        "MainViewModel",
+                        "Update available current=${info.currentVersion}, latest=${info.latestVersion}"
+                    )
+                }.onFailure { error ->
+                    AppLog.w("MainViewModel", "Check update failed: ${error.message}", error)
+                }
+            } finally {
+                isUpdateCheckInProgress = false
+            }
+        }
+    }
+
+    private fun dismissUpdateDialog() {
+        _uiState.update { it.copy(availableUpdate = null) }
+    }
+
+    private fun openUpdateUrl() {
+        val updateInfo = _uiState.value.availableUpdate ?: return
+        _uiState.update { it.copy(availableUpdate = null) }
+        if (updateInfo.downloadUrl.isNotBlank()) {
+            emitEffect(
+                MainUiEffect.DownloadLauncherUpdate(
+                    downloadUrl = updateInfo.downloadUrl,
+                    latestVersion = updateInfo.latestVersion,
+                    releaseUrl = updateInfo.releaseUrl
+                )
+            )
+        } else {
+            emitEffect(MainUiEffect.OpenUrl(updateInfo.releaseUrl))
+        }
+    }
+
+    private fun openCloudUpdateUrl() {
+        val updateInfo = _uiState.value.availableUpdate ?: return
+        val cloudUrl = updateInfo.cloudDownloadUrl.trim()
+        if (cloudUrl.isBlank()) {
+            openUpdateUrl()
+            return
+        }
+        _uiState.update { it.copy(availableUpdate = null) }
+        emitEffect(MainUiEffect.OpenUrl(cloudUrl))
+    }
+
+    private fun ignoreCurrentUpdate() {
+        if (_uiState.value.availableUpdate == null) return
+        _uiState.update { it.copy(availableUpdate = null) }
+    }
+
+    private fun LauncherUpdateInfo.toAppUpdateUiModel(): AppUpdateUiModel {
+        return AppUpdateUiModel(
+            currentVersion = currentVersion,
+            latestVersion = latestVersion,
+            releaseName = releaseName,
+            releaseNotes = releaseNotes,
+            downloadUrl = downloadUrl,
+            releaseUrl = releaseUrl,
+            githubDownloadUrl = githubDownloadUrl,
+            cloudDownloadUrl = cloudDownloadUrl,
+            publishedAt = publishedAt
+        )
+    }
+
+    private fun resolveCurrentVersionName(): String {
+        return runCatching {
+            val packageInfo = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                appContext.packageManager.getPackageInfo(
+                    appContext.packageName,
+                    PackageManager.PackageInfoFlags.of(0)
+                )
+            } else {
+                @Suppress("DEPRECATION")
+                appContext.packageManager.getPackageInfo(appContext.packageName, 0)
+            }
+
+            packageInfo.versionName
+                ?.trim()
+                ?.ifBlank { "0.0.0" }
+                ?: "0.0.0"
+        }.getOrDefault("0.0.0")
+    }
+
+    private fun emitEffect(effect: MainUiEffect) {
+        viewModelScope.launch {
+            _effects.emit(effect)
+        }
+    }
+}

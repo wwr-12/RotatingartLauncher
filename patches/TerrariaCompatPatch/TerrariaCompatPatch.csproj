@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- 对 net8.0 构建（与 ConsolePatch 一致，通过 MonoMod.Core 构建期检查）；
+         运行时由启动器 .NET 10 CoreCLR roll-forward 加载（现有补丁同理） -->
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <OutputType>Library</OutputType>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <AssemblyName>TerrariaCompatPatch</AssemblyName>
+    <RootNamespace>TerrariaCompatPatch</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Harmony 运行时由 MONOMOD_PATH 提供（MonoMod.zip 含 0Harmony.dll），不随补丁一起打包 -->
+    <PackageReference Include="Lib.Harmony.Thin" Version="2.3.3">
+      <Private>False</Private>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

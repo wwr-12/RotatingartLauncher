@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material Design 3 颜色系统 -->
+
+    <!-- 主色调 (Primary) - 精致的浅蓝色，提升高级感 -->
+    <color name="md_theme_light_primary">#5B8DEF</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_primaryContainer">#E8F2FF</color>
+    <color name="md_theme_light_onPrimaryContainer">#1E3A5F</color>
+
+    <!-- 次色调 (Secondary) -->
+    <color name="md_theme_light_secondary">#9965F4</color>
+    <color name="md_theme_light_onSecondary">#FFFFFF</color>
+    <color name="md_theme_light_secondaryContainer">#E0D5FF</color>
+    <color name="md_theme_light_onSecondaryContainer">#1A0052</color>
+
+    <!-- 三级色 (Tertiary) -->
+    <color name="md_theme_light_tertiary">#4CAF50</color>
+    <color name="md_theme_light_onTertiary">#FFFFFF</color>
+    <color name="md_theme_light_tertiaryContainer">#C8E6C9</color>
+    <color name="md_theme_light_onTertiaryContainer">#1B5E20</color>
+
+    <!-- 错误色 (Error) -->
+    <color name="md_theme_light_error">#B00020</color>
+    <color name="md_theme_light_errorContainer">#FFDAD6</color>
+    <color name="md_theme_light_onError">#FFFFFF</color>
+    <color name="md_theme_light_onErrorContainer">#410002</color>
+
+    <!-- 背景色 (Background) - 使用精致的浅蓝色调 -->
+    <color name="md_theme_light_background">#FAFBFC</color>
+    <color name="md_theme_light_onBackground">#1C1B1F</color>
+
+    <!-- 表面色 (Surface) - 使用精致的浅蓝色调，提升高级感 -->
+    <color name="md_theme_light_surface">#FAFBFC</color>
+    <color name="md_theme_light_onSurface">#1C1B1F</color>
+    <color name="md_theme_light_surfaceVariant">#F2F4F8</color>
+    <color name="md_theme_light_onSurfaceVariant">#49454F</color>
+    <color name="md_theme_light_surfaceContainerHighest">#EAECF0</color>
+    <color name="md_theme_light_surfaceContainer">#F5F7FA</color>
+    <color name="md_theme_light_surfaceContainerHigh">#F2F4F8</color>
+    <color name="md_theme_light_surfaceContainerLow">#F7F9FC</color>
+
+    <!-- 轮廓线 (Outline) - 增强对比度 -->
+    <color name="md_theme_light_outline">#79747E</color>
+    <color name="md_theme_light_outlineVariant">#E0E0E0</color>
+
+    <!-- 浅色主题颜色（向后兼容） -->
+    <!-- 背景色 - 使用精致的浅蓝色调 -->
+    <color name="background_primary">#FAFBFC</color>
+    <color name="background_secondary">#F2F4F8</color>
+    <color name="background_card">#FAFBFC</color>
+    <color name="background_sidebar">#EAECF0</color>
+    <color name="background_dark">#000000</color>
+
+    <!-- 文本颜色 -->
+    <color name="text_primary">#1C1B1F</color>
+    <color name="text_secondary">#49454F</color>
+    <color name="text_hint">#9E9E9E</color>
+
+    <!-- 分隔线 -->
+    <color name="divider">#A4B4D8</color>
+    
+    <!-- 按钮颜色 -->
+    <color name="button_secondary">#E0E0E0</color>
+    <color name="button_disabled">#BDBDBD</color>
+    
+    <!-- 选中状态 -->
+    <color name="selected_item_background">#20BB86FC</color>
+    
+    <!-- 强调色（紫色系 - 参考 FNALaunch） -->
+    <color name="accent_primary">#BB86FC</color>
+    <color name="accent_primary_light">#30BB86FC</color>
+    <color name="accent_secondary">#9965F4</color>
+    <color name="accent_green">#4CAF50</color>
+    
+    <!-- 渐变色（用于背景） -->
+    <color name="gradient_blue_start">#DBE9FD</color>
+    <color name="gradient_purple_end">#DCD9FF</color>
+    <color name="gradient_dark_start">#000000</color>
+    <color name="gradient_dark_end">#1A1A1A</color>
+    
+    <!-- 状态色 -->
+    <color name="transparent">#00000000</color>
+    <color name="semi_transparent_dark">#80000000</color>
+    <color name="semi_transparent_light">#80FFFFFF</color>
+    
+    <!-- Snackbar 颜色 -->
+    <color name="snackbar_success">#E8F5E9</color>
+    <color name="snackbar_success_stroke">#4CAF50</color>
+    <color name="snackbar_error">#FFEBEE</color>
+    <color name="snackbar_error_stroke">#F44336</color>
+    <color name="snackbar_info">#E3F2FD</color>
+    <color name="snackbar_info_stroke">#2196F3</color>
+    
+    <!-- 按钮颜色 -->
+    <color name="delete_button_bg">#F44336</color>
+    <color name="ripple_error">#80F44336</color>
+    
+    <!-- 控件包状态颜色 -->
+    <color name="status_installed">#4CAF50</color>
+    <color name="status_update">#FF9800</color>
+    <color name="status_downloading">#2196F3</color>
+    <color name="status_installing">#9C27B0</color>
+
+    <!-- 深色主题颜色（默认声明，避免 MissingDefaultResource；values-night 会覆盖这些值） -->
+    <color name="md_theme_dark_primary">#D0BCFF</color>
+    <color name="md_theme_dark_onPrimary">#381E72</color>
+    <color name="md_theme_dark_primaryContainer">#4F378B</color>
+    <color name="md_theme_dark_onPrimaryContainer">#EADDFF</color>
+    <color name="md_theme_dark_secondary">#CCC2DC</color>
+    <color name="md_theme_dark_onSecondary">#332D41</color>
+    <color name="md_theme_dark_secondaryContainer">#4A4458</color>
+    <color name="md_theme_dark_onSecondaryContainer">#E8DEF8</color>
+    <color name="md_theme_dark_tertiary">#81C784</color>
+    <color name="md_theme_dark_onTertiary">#2E7D32</color>
+    <color name="md_theme_dark_tertiaryContainer">#388E3C</color>
+    <color name="md_theme_dark_onTertiaryContainer">#C8E6C9</color>
+    <color name="md_theme_dark_error">#F2B8B5</color>
+    <color name="md_theme_dark_errorContainer">#8C1D18</color>
+    <color name="md_theme_dark_onError">#601410</color>
+    <color name="md_theme_dark_onErrorContainer">#F9DEDC</color>
+    <color name="md_theme_dark_background">#1C1B1F</color>
+    <color name="md_theme_dark_onBackground">#E6E1E5</color>
+    <color name="md_theme_dark_surface">#1C1B1F</color>
+    <color name="md_theme_dark_onSurface">#E6E1E5</color>
+    <color name="md_theme_dark_surfaceVariant">#49454F</color>
+    <color name="md_theme_dark_onSurfaceVariant">#CAC4D0</color>
+    <color name="md_theme_dark_outline">#938F99</color>
+    <color name="md_theme_dark_outlineVariant">#49454F</color>
+</resources>

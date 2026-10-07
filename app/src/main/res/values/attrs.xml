@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 自定义主题属性 -->
+    <attr name="backgroundPrimary" format="color" />
+    <attr name="backgroundSecondary" format="color" />
+    <attr name="backgroundCard" format="color" />
+    <attr name="backgroundSidebar" format="color" />
+    
+    <attr name="textPrimary" format="color" />
+    <attr name="textSecondary" format="color" />
+    <attr name="textHint" format="color" />
+    
+    <attr name="dividerColor" format="color" />
+</resources>
+

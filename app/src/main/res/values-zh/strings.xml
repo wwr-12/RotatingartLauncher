@@ -1,0 +1,2087 @@
+<resources>
+    <string name="app_name">Rotating Art Launcher</string>
+
+    <!-- 主界面 -->
+    <string name="main_no_game_selected">未选择游戏</string>
+    <string name="main_select_game">请选择一个游戏</string>
+    <string name="main_launch_game">启动游戏</string>
+    <string name="main_add_game">添加游戏</string>
+    <string name="main_refresh">刷新</string>
+    <string name="main_settings">设置</string>
+    <string name="main_control_layout">控制布局</string>
+    <string name="main_game_list_mode">游戏列表模式</string>
+    <string name="main_refresh_complete">已刷新游戏列表</string>
+
+    <!-- 游戏信息 -->
+    <string name="game_name">游戏名称</string>
+    <string name="game_description">游戏描述</string>
+    <string name="game_path">程序集路径</string>
+    <string name="game_save_path">保存路径</string>
+    <string name="game_path_saved">程序集路径已保存</string>
+    <string name="game_path_empty">程序集路径不能为空</string>
+    <string name="game_path_not_exist">警告: 文件不存在，但已保存路径</string>
+    <string name="game_file_not_exist">程序集文件不存在: %s</string>
+    <string name="game_added_success">游戏添加成功！</string>
+    <string name="game_deleted_with_files">游戏及文件已删除</string>
+    <string name="game_deleted_partial">游戏已从列表删除，但部分文件可能未删除</string>
+
+    <!-- 游戏删除 -->
+    <string name="delete_game_title">删除游戏</string>
+    <string name="delete_game_message">确定要删除 %s 吗？\n\n注意：这将同时删除游戏文件</string>
+    <string name="delete_confirm">删除</string>
+    <string name="delete_cancel">取消</string>
+    <string name="confirm">确定</string>
+    <string name="close">关闭</string>
+
+    <!-- 错误 -->
+    <string name="error_message_default">发生了一个错误</string>
+    <string name="error_operation_failed">操作失败</string>
+
+    <!-- 导入游戏 -->
+    <string name="import_select_game_file">选择游戏文件</string>
+    <string name="import_select_modloader">选择 ModLoader</string>
+    <string name="import_game_file">游戏文件</string>
+    <string name="import_modloader_file">ModLoader 文件</string>
+    <string name="import_optional">(可选)</string>
+    <string name="import_start">开始导入</string>
+    <string name="import_extracting">正在解压游戏文件...</string>
+    <string name="import_extracting_file">正在解压: %s</string>
+    <string name="import_extraction_complete">解压完成</string>
+    <string name="import_extraction_failed">解压失败</string>
+    <string name="import_installing_modloader">正在安装ModLoader...</string>
+    <string name="import_complete">导入完成</string>
+    <string name="import_error">导入失败: %s</string>
+    <string name="import_install_failed">安装失败: %s</string>
+    <string name="import_error_game_import_failed">导入游戏失败</string>
+    <string name="import_storage_insufficient">存储空间不足！\n需要约 %1$.1f GB\n可用 %2$.1f GB\n\n请释放更多空间后重试</string>
+    <string name="import_game_file_not_exist">游戏文件不存在: %s</string>
+    <string name="import_modloader_file_not_exist">ModLoader文件不存在: %s</string>
+
+    <!-- 设置 -->
+    <string name="settings">设置</string>
+    <string name="theme_settings">主题设置</string>
+    <string name="theme_system">跟随系统</string>
+    <string name="theme_dark">深色主题</string>
+    <string name="theme_light">浅色主题</string>
+    <string name="theme_color">主题颜色</string>
+    <string name="theme_color_desc">自定义应用主题颜色</string>
+    <string name="theme_color_changed">主题颜色已更改，重启应用后生效</string>
+    <string name="background_settings">背景设置</string>
+    <string name="background_settings_desc">自定义应用背景</string>
+    <string name="background_default">默认</string>
+    <string name="background_color">纯色</string>
+    <string name="background_image">图片</string>
+    <string name="language_settings">语言设置</string>
+    <string name="language_system">跟随系统</string>
+    <string name="language_english">English</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_changed">语言已切换到 %s</string>
+    <string name="app_info">应用信息</string>
+    <string name="app_version">版本 %1$s</string>
+    <string name="app_description">Rotating art Launcher - 游戏启动器</string>
+    <string name="app_authors">作者:</string>
+    <string name="restart_required">需要重启</string>
+    <string name="restart_app_message">语言设置已更改，需要重启应用才能生效。</string>
+    <string name="ok">确定</string>
+    <string name="later">稍后</string>
+    <string name="cancel">取消</string>
+
+    <!-- 运行时 -->
+    <string name="runtime_selector_title">.NET 运行时版本</string>
+    <string name="runtime_version_latest">最新版本 - 推荐使用</string>
+    <string name="runtime_version_lts">长期支持版本 (LTS)</string>
+    <string name="runtime_changed">已切换到 .NET %s</string>
+    
+    <!-- 游戏内菜单 -->
+    <string-array name="game_menu_items">
+        <item>切换控制显示</item>
+        <item>编辑控制布局</item>
+        <item>快速设置</item>
+        <item>退出游戏</item>
+    </string-array>
+    
+    <!-- 编辑模式菜单 -->
+    <string-array name="editor_menu_items">
+        <item>添加按钮</item>
+        <item>添加摇杆</item>
+        <item>保存布局</item>
+        <item>加载布局</item>
+        <item>重置为默认</item>
+        <item>退出编辑</item>
+    </string-array>
+    
+    <string name="game_menu_toggle_controls">切换控制显示</string>
+    <string name="game_menu_edit_controls">编辑控制布局</string>
+    <string name="game_menu_quick_settings">快速设置</string>
+    <string name="game_menu_exit">退出游戏</string>
+    <string name="game_menu_controls_on">控制已显示</string>
+    <string name="game_menu_controls_off">控制已隐藏</string>
+    <string name="game_menu_exit_confirm">确认退出</string>
+    <string name="game_menu_exit_message">是否退出游戏？</string>
+    <string name="game_menu_yes">是</string>
+    <string name="game_menu_no">否</string>
+    
+    <string name="editor_add_button">添加按钮</string>
+    <string name="editor_add_joystick">添加摇杆</string>
+    <string name="editor_add_touchpad_text">添加触摸板</string>
+    <string name="editor_add_mousewheel_text">添加鼠标滚轮</string>
+    <string name="editor_save">保存布局</string>
+    <string name="editor_load">加载布局</string>
+    <string name="editor_reset">重置为默认</string>
+    <string name="editor_exit">退出编辑</string>
+    <string name="editor_mode_on">已进入编辑模式</string>
+    <string name="editor_mode_off">已退出编辑模式</string>
+    <string name="editor_exit_confirm">确认退出编辑</string>
+    <string name="editor_exit_message">是否退出编辑模式？未保存的修改将丢失。</string>
+
+    <!-- 通用消息 -->
+    <string name="msg_loading">加载中...</string>
+    <string name="msg_processing">处理中...</string>
+    <string name="msg_please_wait">请稍候...</string>
+    <string name="msg_success">成功</string>
+    <string name="msg_failed">失败</string>
+    <string name="msg_error">错误</string>
+    <string name="msg_warning">警告</string>
+
+    <!-- 设置分类 -->
+    <string name="settings_appearance">外观设置</string>
+    <string name="settings_control">控制设置</string>
+    <string name="settings_game">游戏设置</string>
+    <string name="settings_launcher">启动器设置</string>
+    <string name="settings_developer">高级设置</string>
+    <string name="settings_select_category_prompt">选择一个设置分类</string>
+    <string name="settings_category_appearance_desc">主题、背景、语言</string>
+    <string name="settings_category_controls_desc">触控、控制器设置</string>
+    <string name="settings_category_game_desc">运行时、渲染器设置</string>
+    <string name="settings_category_launcher_desc">补丁管理、高级选项</string>
+    <string name="settings_category_developer_desc">日志、调试选项</string>
+    <string name="settings_category_about_desc">版本、开源许可</string>
+    <string name="settings_launcher_assets_section">资产管理</string>
+    <string name="settings_launcher_check_integrity_title">检查资产完整性</string>
+    <string name="settings_launcher_check_integrity_subtitle">检查库文件和资源是否完整</string>
+    <string name="settings_launcher_reextract_runtime_subtitle">如果游戏启动失败，尝试重新解压</string>
+    <string name="settings_launcher_enable_multiplayer_title">启用联机功能</string>
+    <string name="settings_launcher_enable_multiplayer_subtitle">开启后可在游戏内使用 P2P 联机功能</string>
+    <string name="settings_quality_high">高画质</string>
+    <string name="settings_quality_medium">中画质</string>
+    <string name="settings_quality_low">低画质</string>
+    <string name="settings_quality_applied_toast">已设置为%1$s，重启游戏后生效</string>
+    <string name="settings_restart_required_toast">重启游戏后生效</string>
+    <string name="settings_fps_unlimited">无限制</string>
+    <string name="settings_fps_limit_applied_toast">帧率限制已设置为%1$s，重启游戏后生效</string>
+    <string name="settings_checking_update">正在检查更新...</string>
+    <string name="common_auto">自动</string>
+    <string name="common_on">开启</string>
+    <string name="common_off">关闭</string>
+    <string name="settings_game_audio_buffer_title">音频缓冲区大小</string>
+    <string name="settings_game_audio_buffer_subtitle">设置 FAudio 和 FMOD 的缓冲区大小，较小的值可降低音频延迟但可能增加断音风险</string>
+    <string name="settings_game_quality_section">画质</string>
+    <string name="settings_game_quality_preset_title">画质预设</string>
+    <string name="settings_game_quality_preset_subtitle">选择画质等级，低画质可提高性能</string>
+    <string name="settings_game_shader_low_precision_title">低精度着色器</string>
+    <string name="settings_game_shader_low_precision_subtitle">降低 Shader 精度以提升性能</string>
+    <string name="settings_game_fps_limit_title">帧率限制</string>
+    <string name="settings_game_fps_limit_subtitle">限制游戏最大帧率，可节省电量</string>
+
+    <!-- 设置项 -->
+    <string name="settings_theme_desc_auto">根据系统设置自动切换</string>
+    <string name="settings_theme_desc_dark">始终使用深色主题</string>
+    <string name="settings_theme_desc_light">始终使用浅色主题</string>
+    <string name="settings_language_desc_auto">使用系统语言设置</string>
+    <string name="settings_language_desc_en">使用英语</string>
+    <string name="settings_language_desc_zh">使用简体中文</string>
+    <string name="settings_language_desc_ru">使用俄语（机器翻译）</string>
+    <string name="settings_language_desc_es">使用西班牙语（机器翻译）</string>
+
+    <!-- 渲染器设置 -->
+    <string name="renderer_title">渲染器</string>
+    <string name="renderer_auto">自动选择（推荐）</string>
+    <string name="renderer_auto_desc">自动选择最佳渲染器</string>
+    <string name="renderer_native">Native OpenGL ES 3</string>
+    <string name="renderer_native_desc">原生硬件加速，性能最佳。但功能有限，部分游戏可能有兼容性问题</string>
+    <string name="renderer_gl4es">GL4ES</string>
+    <string name="renderer_gl4es_desc">OpenGL 翻译层，兼容性强。翻译有轻微性能开销</string>
+    <string name="renderer_gl4es_angle">GL4ES + ANGLE</string>
+    <string name="renderer_gl4es_angle_desc">翻译至 Vulkan 后端，兼容性与性能最佳平衡（推荐）</string>
+    <string name="renderer_angle">ANGLE (Vulkan)</string>
+    <string name="renderer_angle_desc">OpenGL ES over Vulkan（Google官方，需要 Android 7.0+）</string>
+    
+    <string name="renderer_opengl">OpenGL (gl4es+)</string>
+    <string name="renderer_opengl_desc">通过 gl4es+ 翻译层</string>
+    <string name="renderer_opengles3">OpenGL ES 3 (Native)</string>
+    <string name="renderer_opengles3_desc">使用原生 OpenGL ES 3</string>
+    <string name="renderer_vulkan">Vulkan (实验性)</string>
+    <string name="renderer_vulkan_desc">使用 Vulkan API</string>
+    <string name="renderer_changed">渲染器已更改</string>
+
+    <!-- 开发者设置 -->
+    <string name="developer_console">开发者控制台</string>
+    <string name="developer_console_on">开启</string>
+    <string name="developer_console_off">关闭</string>
+    <string name="developer_console_desc_on">显示 C# Console 输出和输入界面</string>
+    <string name="developer_console_desc_off">禁用开发者控制台</string>
+    <string name="developer_console_enabled">已启用开发者控制台，启动游戏时生效</string>
+    <string name="developer_console_disabled">已禁用开发者控制台</string>
+
+    <string name="enable_log_system">启用日志系统</string>
+    <string name="enable_log_system_desc">启用后应用会记录运行日志，不建议关闭</string>
+    <string name="enable_log_system_enabled">已启用日志系统，重启应用后生效</string>
+    <string name="enable_log_system_disabled">已禁用日志系统，重启应用后生效</string>
+
+    <string name="verbose_logging">详细日志</string>
+    <string name="verbose_logging_on">开启</string>
+    <string name="verbose_logging_off">关闭</string>
+    <string name="verbose_logging_desc_on">输出 CoreCLR 详细调试信息</string>
+    <string name="verbose_logging_desc_off">只输出基本信息</string>
+    <string name="verbose_logging_enabled">已启用详细日志，重启应用后生效</string>
+    <string name="verbose_logging_disabled">已禁用详细日志</string>
+
+    <string name="export_share_log">导出并分享日志文件</string>
+    <string name="export_share_log_desc">将应用日志导出为文件并分享给其他应用</string>
+    <string name="export">导出</string>
+    <string name="exporting_log">正在导出日志…</string>
+    <string name="log_exported">日志已导出</string>
+    <string name="log_export_failed">日志导出失败: %s</string>
+    <string name="log_system_disabled_title">日志系统未启用</string>
+    <string name="log_system_disabled_message">日志系统当前未启用，无法导出日志文件。请先启用"启用日志系统"选项，然后重启应用以开始记录日志。</string>
+
+    <string name="thread_affinity_big_core">线程亲和性 - 大核心</string>
+    <string name="thread_affinity_big_core_desc">将主线程绑定到大核心以提升性能</string>
+    <string name="thread_affinity_big_core_enabled">已启用大核心线程亲和性</string>
+    <string name="thread_affinity_big_core_disabled">已禁用大核心线程亲和性</string>
+
+    <string name="kill_launcher_ui_after_launch">启动游戏后终止启动器UI</string>
+    <string name="kill_launcher_ui_after_launch_desc">游戏启动后终止启动器UI进程以释放内存</string>
+    <string name="kill_launcher_ui_enabled">已启用启动器UI终止</string>
+    <string name="kill_launcher_ui_disabled">已禁用启动器UI终止</string>
+
+    <!-- 补丁管理 -->
+    <string name="patch_management">补丁管理</string>
+    <string name="patch_management_desc">管理游戏补丁的启用状态</string>
+    <string name="patch_dialog_title">补丁管理</string>
+    <string name="patch_dialog_desc">选择游戏后,在右侧为该游戏开启或关闭补丁</string>
+    <string name="patch_enabled">已启用</string>
+    <string name="patch_disabled">已禁用</string>
+    <string name="patch_no_games">暂无游戏</string>
+    <string name="patch_assembly_patch">程序集补丁</string>
+    <string name="patch_tmodloader_only">仅对 tModLoader 生效</string>
+    <string name="patch_status_changed">补丁状态已更新</string>
+    <string name="game_list_title">游戏列表</string>
+    <string name="patch_list_title">补丁列表</string>
+    <string name="no_game_selected">请先选择游戏</string>
+    <string name="no_patches_for_game">此游戏没有可用的补丁</string>
+    
+    <!-- 杂项 -->
+    <string name="miscellaneous">杂项</string>
+
+    <!-- 补丁管理 -->
+    <string name="force_reinstall_patches">强制重新安装内置补丁</string>
+    <string name="force_reinstall_patches_desc">清除并重新安装所有内置补丁（如遇补丁问题时使用）</string>
+    <string name="reinstall">重新安装</string>
+    <string name="reinstalling_patches">正在重新安装补丁…</string>
+    <string name="patches_reinstalled">补丁已重新安装</string>
+    <string name="patches_reinstall_failed">补丁重新安装失败: %s</string>
+
+    <!-- CoreCLR 运行时配置 -->
+    <string name="coreclr_settings">CoreCLR 运行时配置</string>
+    <string name="coreclr_gc_settings">垃圾回收 (GC) 设置</string>
+    <string name="coreclr_jit_settings">即时编译 (JIT) 设置</string>
+
+    <!-- CoreCLR GC 设置 -->
+    <string name="coreclr_server_gc">Server GC</string>
+    <string name="coreclr_server_gc_desc">启用服务器垃圾回收（多核优化，更高吞吐量，更高内存占用）</string>
+    <string name="coreclr_server_gc_on">启用</string>
+    <string name="coreclr_server_gc_off">禁用（推荐移动端）</string>
+
+    <string name="coreclr_concurrent_gc">Concurrent GC</string>
+    <string name="coreclr_concurrent_gc_desc">启用并发垃圾回收（减少暂停时间，推荐）</string>
+    <string name="coreclr_concurrent_gc_on">启用（推荐）</string>
+    <string name="coreclr_concurrent_gc_off">禁用</string>
+
+    <string name="coreclr_gc_heap_count">GC Heap 数量</string>
+    <string name="coreclr_gc_heap_count_desc">垃圾回收堆的数量（仅 Server GC 有效）</string>
+    <string name="coreclr_gc_heap_count_auto">自动检测</string>
+    <string name="coreclr_gc_heap_count_1">1 个堆</string>
+    <string name="coreclr_gc_heap_count_2">2 个堆</string>
+    <string name="coreclr_gc_heap_count_4">4 个堆</string>
+
+    <string name="coreclr_retain_vm">Retain VM</string>
+    <string name="coreclr_retain_vm_desc">保留虚拟内存段（减少内存分配开销，增加内存占用）</string>
+    <string name="coreclr_retain_vm_on">启用</string>
+    <string name="coreclr_retain_vm_off">禁用（推荐）</string>
+
+    <!-- CoreCLR JIT 设置 -->
+    <string name="coreclr_tiered_compilation">Tiered Compilation</string>
+    <string name="coreclr_tiered_compilation_desc">启用分层编译（加快启动速度，推荐）</string>
+    <string name="coreclr_tiered_compilation_on">启用（推荐）</string>
+    <string name="coreclr_tiered_compilation_off">禁用</string>
+
+    <string name="coreclr_quick_jit">Quick JIT</string>
+    <string name="coreclr_quick_jit_desc">启用快速 JIT（Tier 0，更快的初始编译）</string>
+    <string name="coreclr_quick_jit_on">启用（推荐）</string>
+    <string name="coreclr_quick_jit_off">禁用</string>
+
+    <string name="coreclr_jit_optimize_type">JIT 优化类型</string>
+    <string name="coreclr_jit_optimize_type_desc">即时编译的优化策略</string>
+    <string name="coreclr_jit_optimize_blended">混合（推荐）</string>
+    <string name="coreclr_jit_optimize_size">体积优先</string>
+    <string name="coreclr_jit_optimize_speed">速度优先</string>
+
+    <!-- CoreCLR 设置提示 -->
+    <string name="coreclr_settings_warning">修改这些设置可能影响游戏性能和稳定性</string>
+    <string name="coreclr_settings_restart">设置将在下次启动游戏时生效</string>
+
+    <!-- FNA 设置 -->
+    <string name="fna_map_buffer_range_opt">启用 MapBufferRange 优化</string>
+    <string name="fna_map_buffer_range_opt_desc">如果支持，启用 OpenGL MapBufferRange 优化（可能改善性能）</string>
+    <string name="fna_map_buffer_range_opt_enabled">MapBufferRange 优化已启用</string>
+    <string name="fna_map_buffer_range_opt_disabled">MapBufferRange 优化已禁用</string>
+
+    <!-- 音频设置 -->
+    <string name="low_latency_audio">低延迟音频</string>
+    <string name="low_latency_audio_desc">启用 AAudio 低延迟模式（可能改善音频延迟，但可能增加功耗。警告：此选项可能导致音频无法正常工作）</string>
+    <string name="low_latency_audio_enabled">低延迟音频已启用</string>
+    <string name="low_latency_audio_disabled">低延迟音频已禁用</string>
+
+    <!-- 控件编辑对话框 -->
+    <string name="control_edit_close">关闭</string>
+    <string name="control_edit_save">保存</string>
+    <string name="control_edit_delete">删除</string>
+
+    <!-- MainActivity 消息 -->
+    <string name="main_runtime_switched">已切换到 .NET %s</string>
+    <string name="main_select_game_first">请先选择一个游戏</string>
+    <string name="main_shortcut_removed">快捷方式已从列表移除</string>
+    <string name="main_game_deleted">游戏及文件已删除</string>
+    <string name="main_game_deleted_partial">游戏已从列表删除，但部分文件可能未删除</string>
+    <string name="main_permission_required_title">需要权限</string>
+    <string name="main_permission_required_message">尚未授予足够的文件访问权限。请开启所需的存储权限，以便启动器读取和管理游戏文件。</string>
+
+    <!-- MainImportDelegate 消息 -->
+    <string name="import_added_to_list">已添加到游戏列表</string>
+    <string name="import_file_not_exist">选择的文件不存在</string>
+    <string name="import_assembly_desc">程序集: %s</string>
+    <string name="import_game_added">已添加游戏: %s</string>
+    <string name="import_add_failed">添加游戏失败: %s</string>
+    <string name="import_add_to_list">添加到游戏列表</string>
+    <string name="import_add_to_list_desc">将此程序集添加到游戏列表以便快速启动</string>
+    <string name="import_file_action">文件操作: %s</string>
+
+    <!-- GameActivity 消息 -->
+    <string name="game_completed_successfully">游戏已成功运行完成</string>
+    <string name="game_exit_code">退出代码: %d</string>
+    <string name="game_run_failed">游戏运行失败</string>
+
+    <!-- LocalImportFragment 消息 -->
+    <string name="import_file_selected">已选择: %s</string>
+    <string name="import_game_detected">检测到游戏: %1$s %2$s</string>
+    <string name="import_cannot_read_info">无法读取游戏信息，使用默认名称</string>
+    <string name="import_select_game_first">请先选择游戏文件</string>
+    <string name="import_cannot_read_info_failed">无法读取游戏信息，导入失败</string>
+    <string name="import_reading_info">正在读取游戏信息...</string>
+    <string name="import_applying_patches">正在应用补丁...</string>
+    <string name="import_complete_exclamation">导入完成！</string>
+    <string name="import_failed_colon">导入失败: %s</string>
+    <string name="import_unknown_game">未知游戏</string>
+
+    <!-- InitializationFragment 消息 -->
+    <string name="init_grant_permissions">授予权限</string>
+    <string name="init_cannot_open_browser">无法打开浏览器</string>
+    <string name="init_permission_manager_failed">权限管理器初始化失败</string>
+    <string name="init_requesting_permissions">请求权限中...</string>
+    <string name="init_permissions_granted">权限授予成功</string>
+    <string name="init_permissions_denied">权限被拒绝，部分功能可能无法使用</string>
+    <string name="init_permissions_granted_check">✓ 权限已授予</string>
+    <string name="init_continue">继续</string>
+    <string name="init_installing">安装中...</string>
+    <string name="init_retry_install">重试安装</string>
+    <string name="init_extraction_failed">解压失败: %s</string>
+    <string name="init_installed_runtime_versions">已安装 .NET 运行时版本：%s</string>
+    <string name="init_dotnet_install_success">.NET 环境安装成功！</string>
+    <string name="init_click_to_start">点击【同意并安装】开始</string>
+    <string name="init_start_extracting">开始解压...</string>
+    <string name="init_extracting">解压中...</string>
+    <string name="init_extracting_files">解压中 (%d 文件)...</string>
+    <string name="init_extraction_complete">解压完成</string>
+    <string name="init_no_extraction_needed">无需解压</string>
+    <string name="init_preparing_file">准备文件...</string>
+    <string name="init_file_ready">文件准备完成</string>
+    <string name="init_complete">完成</string>
+    <string name="init_extraction_failed_status">解压失败</string>
+    <string name="init_install_complete">安装完成</string>
+    <string name="init_skip_permissions_title">跳过权限授予</string>
+    <string name="init_skip_permissions_message">跳过权限授予可能会导致应用无法正常访问游戏文件。您确定要跳过吗？</string>
+    <string name="init_skip_continue">继续跳过</string>
+    <string name="init_skip_back">返回</string>
+    <string name="init_extraction_failed_component">解压 %s 失败</string>
+
+    <!-- FileBrowserFragment 消息 -->
+    <string name="filebrowser_folder_empty">当前文件夹为空</string>
+    <string name="filebrowser_directory_empty">当前目录为空</string>
+    <string name="filebrowser_confirm_select">确认选择: %s</string>
+    <string name="filebrowser_select_file">选择文件</string>
+    <string name="filebrowser_select_this_file">选择此文件</string>
+    <string name="filebrowser_select_this_file_desc">确认选择此文件</string>
+    <string name="filebrowser_file_action">文件操作: %s</string>
+    <string name="filebrowser_sort_by">排序方式</string>
+    <string name="filebrowser_sort_by_name">按名称排序</string>
+    <string name="filebrowser_sort_by_name_desc">A-Z 字母顺序</string>
+    <string name="filebrowser_sort_by_size">按大小排序</string>
+    <string name="filebrowser_sort_by_size_desc">从大到小</string>
+    <string name="filebrowser_sort_by_time">按时间排序</string>
+    <string name="filebrowser_sort_by_time_desc">最新修改的在前</string>
+    <string name="filebrowser_sorted_by">已按%s排序</string>
+    <string name="filebrowser_sort_name">名称</string>
+    <string name="filebrowser_sort_size">大小</string>
+    <string name="filebrowser_sort_time">时间</string>
+    <string name="filebrowser_parent_directory">返回上级</string>
+    <string name="filebrowser_folder">文件夹</string>
+    <string name="filebrowser_file">文件</string>
+
+    <!-- ControlEditorOperations 消息 -->
+    <string name="editor_no_joystick">当前布局中没有摇杆</string>
+    <string name="editor_joystick_mode_keyboard">键盘按键模式\n使用 WASD 等按键控制移动</string>
+    <string name="editor_joystick_mode_mouse">鼠标移动模式\n控制鼠标指针移动（用于瞄准）</string>
+    <string name="editor_joystick_mode_sdl">SDL 控制器模式\n模拟真实游戏手柄摇杆</string>
+    <string name="editor_joystick_mode_settings">摇杆模式设置</string>
+    <string name="editor_joystick_mode_message">将为所有 %d 个摇杆设置统一模式</string>
+    <string name="editor_mode_keyboard_detailed">键盘按键模式</string>
+    <string name="editor_mode_mouse_detailed">鼠标移动模式</string>
+    <string name="editor_mode_xbox_detailed">XBOX控制器模式</string>
+    <string name="editor_joysticks_set">已将 %1$d 个摇杆设置为%2$s</string>
+    <string name="editor_no_layout_to_save">没有布局可保存</string>
+    <string name="editor_layout_saved">布局已保存</string>
+    <string name="editor_save_failed">保存失败: %s</string>
+    <string name="editor_reset_default">重置为默认布局</string>
+    <string name="editor_reset_confirm">确定要重置为默认布局吗？</string>
+    <string name="editor_reset_complete">已重置为默认布局</string>
+    <string name="editor_button_added">已添加按钮</string>
+    <string name="editor_joystick_added">已添加摇杆</string>
+    <string name="editor_touchpad_added">已添加触控板</string>
+    <string name="editor_mousewheel_added">已添加鼠标滚轮</string>
+    <string name="editor_text_added">已添加文本</string>
+    <string name="editor_select_joystick_type">选择摇杆类型</string>
+    <string name="editor_joystick_type_move_aim">移动+瞄准摇杆</string>
+    <string name="editor_joystick_type_gamepad">手柄摇杆</string>
+    <string name="editor_select_joystick_side">选择摇杆位置</string>
+    <string name="editor_joystick_side_left">左摇杆</string>
+    <string name="editor_joystick_side_right">右摇杆</string>
+
+    <!-- GogClientFragment 消息 -->
+    <string name="gog_email_verification">邮箱验证</string>
+    <string name="gog_email_code_prompt">请输入发送到您邮箱的 4 位验证码</string>
+    <string name="gog_4_digit_code">4位验证码</string>
+    <string name="gog_authenticator">身份验证器</string>
+    <string name="gog_totp_code_prompt">请输入您的 TOTP 验证器中的 6 位验证码</string>
+    <string name="gog_6_digit_code">6位验证码</string>
+    <string name="gog_games_count">%d 款游戏</string>
+    <string name="gog_logged_in">已登录</string>
+    <string name="gog_enter_email">请输入邮箱地址</string>
+    <string name="gog_enter_password">请输入密码</string>
+    <string name="gog_login_success">登录成功</string>
+    <string name="gog_login_failed">登录失败，请检查邮箱和密码</string>
+    <string name="gog_login_error">登录异常: %s</string>
+    <string name="gog_library_empty">您的游戏库为空</string>
+    <string name="gog_load_failed">加载失败: %s</string>
+    <string name="gog_logged_out">已登出</string>
+    <string name="gog_one_click_not_supported">该游戏暂不支持一键安装</string>
+    <string name="gog_no_game_version">没有可用的游戏版本</string>
+    <string name="gog_no_modloader_version">没有可用的 ModLoader 版本</string>
+    <string name="gog_install_game">安装 %s</string>
+    <string name="gog_modloader_version">%s 版本</string>
+    <string name="gog_cannot_access_storage">无法访问外部存储</string>
+    <string name="gog_cannot_get_download_link">无法获取安装程序下载链接</string>
+    <string name="gog_modloader_link_invalid">ModLoader 链接无效</string>
+    <string name="gog_download_failed">下载失败: %s</string>
+    <string name="gog_download_game">下载游戏</string>
+
+    <!-- LocalImportDialog 消息 -->
+    <string name="dialog_modloader_zip">模组加载器 (.zip)</string>
+
+    <!-- AppearanceSettingsModule 消息 -->
+    <string name="appearance_cannot_open_image_picker">无法打开图片选择器</string>
+    <string name="appearance_cannot_open_video_picker">无法打开视频选择器</string>
+    <string name="appearance_background_restored">已恢复默认背景</string>
+    <string name="appearance_not_set">未设置</string>
+    <string name="appearance_no_file_selected">未选择文件</string>
+    <string name="appearance_ui_not_initialized">界面未初始化</string>
+    <string name="appearance_file_not_exist">文件不存在: %s</string>
+    <string name="appearance_background_image">图片背景</string>
+    <string name="appearance_background_video">视频背景</string>
+    <string name="appearance_select_background_type">选择背景类型</string>
+    <string name="appearance_select_image">选择图片</string>
+    <string name="appearance_select_image_desc">从相册选择图片作为背景</string>
+    <string name="appearance_select_video">选择视频</string>
+    <string name="appearance_select_video_desc">从相册选择视频作为背景</string>
+    <string name="appearance_cannot_read_image">无法读取图片</string>
+    <string name="appearance_set_background_failed">设置背景失败: %s</string>
+    <string name="appearance_cannot_get_file_path">无法获取文件路径，请重试</string>
+    <string name="appearance_background_video_set">视频背景已设置</string>
+
+    <!-- UnifiedEditorSettingsDialog 消息 -->
+    <string name="editor_exit_edit_mode">退出编辑模式</string>
+    <string name="editor_enter_edit_mode">进入编辑模式</string>
+    <string name="editor_game_settings">游戏设置</string>
+
+    <!-- ControlEditDialogMD 消息 -->
+    <string name="editor_delete_control">删除控件</string>
+    <string name="editor_delete_control_confirm">确定要删除这个控件吗？</string>
+
+    <!-- GogClientFragment 额外消息 -->
+    <string name="gog_logout_confirm_title">确认登出</string>
+    <string name="gog_logout_confirm_message">确定要登出 GOG 账户吗？</string>
+    <string name="gog_loading_user_info">加载用户信息...</string>
+    <string name="gog_logging_in">正在登录...</string>
+    <string name="gog_loading_games">加载游戏列表...</string>
+    <string name="gog_loading_version_info">正在获取 %s 的版本信息...</string>
+    <string name="gog_load_failed_title">加载失败</string>
+    <string name="gog_network_abort">网络连接中断，请检查网络后重试</string>
+    <string name="gog_network_timeout">连接超时，请检查网络或稍后重试</string>
+    <string name="gog_network_dns">无法连接到 GOG 服务器，请检查网络或使用 VPN</string>
+    <string name="gog_get_details_failed">获取游戏详情失败，请重试</string>
+    <string name="gog_error_details">错误详情: %s</string>
+    <string name="gog_retry">重试</string>
+    <string name="gog_load_games_failed">获取游戏列表失败: %s</string>
+    <string name="gog_games_loaded">已加载 %d 款游戏</string>
+
+    <!-- ControlEditorActivity 消息 -->
+    <string name="editor_exit_title">退出编辑器</string>
+    <string name="editor_exit_save_confirm">是否保存当前布局？</string>
+    <string name="editor_save_and_exit">保存并退出</string>
+
+    <!-- ControlJoystickModeManager 消息 -->
+    <string name="editor_select_joystick_mode">选择摇杆模式</string>
+
+    <!-- RuntimeSelectorManager 消息 -->
+    <string name="runtime_dotnet_version">.NET %s</string>
+    <string name="runtime_already_selected">当前已是 .NET %s</string>
+
+    <!-- ControlEditDialogDataFiller 消息 -->
+    <string name="editor_right_stick">右摇杆</string>
+    <string name="editor_left_stick">左摇杆</string>
+    <string name="editor_joystick_bg_opacity">摇杆背景透明度</string>
+    <string name="editor_joystick_bg_opacity_desc">设置摇杆背景的透明度</string>
+    <string name="editor_opacity">透明度</string>
+
+    <!-- KeySelectorDialog 消息 -->
+    <string name="editor_select_gamepad_key">选择手柄按键</string>
+    <string name="editor_select_key">选择按键</string>
+
+    <!-- ControlJoystickComboKeysManager 消息 -->
+    <string name="editor_select_combo_keys">选择组合键（所有方向共用）</string>
+
+    <!-- ControlColorManager 消息 -->
+    <string name="editor_select_bg_color">选择背景色</string>
+    <string name="editor_select_border_color">选择边框色</string>
+
+    <!-- ControlTypeManager 消息 -->
+    <string name="editor_select_control_type">选择控件类型</string>
+
+    <!-- ControlLayoutFragment 消息 -->
+    <string name="control_create_layout">新建控制布局</string>
+    <string name="control_layout_name_exists">布局名称已存在</string>
+    <string name="control_create">创建</string>
+    <string name="control_new_layout">新建布局</string>
+    <string name="control_rename_layout">重命名布局</string>
+    <string name="control_layout_renamed">布局已重命名</string>
+    <string name="control_layout_duplicated">布局已复制</string>
+    <string name="control_set_as_default">已设为默认布局</string>
+    <string name="control_export_failed">导出失败: %s</string>
+    <string name="control_export_success">布局已导出</string>
+    <string name="control_export_failed_write">导出失败: 无法写入文件</string>
+    <string name="control_delete_layout">删除布局</string>
+    <string name="control_delete_default_layout_confirm">确定要删除默认布局 \"%s\" 吗？\n删除后需要手动创建新布局才能使用。</string>
+    <string name="control_delete_layout_confirm">确定要删除布局 \"%s\" 吗？</string>
+    <string name="control_delete">删除</string>
+    <string name="control_layout_deleted">布局已删除</string>
+    <string name="control_cannot_read_file">无法读取文件</string>
+    <string name="control_layout_file_invalid">布局文件格式不正确或为空</string>
+    <string name="control_clear">清除</string>
+    <string name="control_unknown">未知</string>
+    <string name="control_none">无</string>
+    <string name="control_direction_up">上</string>
+    <string name="control_direction_up_right">右上</string>
+    <string name="control_direction_right">右</string>
+    <string name="control_direction_down_right">右下</string>
+    <string name="control_direction_down">下</string>
+    <string name="control_direction_down_left">左下</string>
+    <string name="control_direction_left">左</string>
+    <string name="control_direction_up_left">左上</string>
+    <string name="control_type_button_keyboard">按钮（键盘）</string>
+    <string name="control_type_button_gamepad">按钮（手柄）</string>
+    <string name="control_type_joystick">摇杆</string>
+    <string name="control_type_touchpad">触控板</string>
+    <string name="control_type_mousewheel">鼠标滚轮</string>
+    <string name="control_type_text">文本</string>
+    <string name="control_type_button">按钮</string>
+    <string name="control_import_success">已导入布局：%s</string>
+    <string name="control_import_failed">导入失败：%s</string>
+    <string name="control_select_preset">选择预设配置</string>
+    <string name="control_preset_file_invalid">预设配置文件格式不正确或为空</string>
+    <string name="control_preset_imported">已导入预设配置：%s</string>
+    <string name="control_select_shape">选择控件形状</string>
+    <string name="control_count">%d 个控件</string>
+    <string name="editor_toggle_button_press_hold">切换按钮（按下保持）</string>
+    <string name="editor_edit_control_properties">编辑控件属性</string>
+
+    <!-- RuntimeSelectorDialog 消息 -->
+    <string name="runtime_version_latest_desc">最新版本 - 推荐使用</string>
+    <string name="runtime_version_stable_desc">稳定版本 - 推荐使用</string>
+    <string name="runtime_version_lts_desc">长期支持版本 (LTS)</string>
+    <string name="runtime_version_old_desc">旧版本 - 兼容性好</string>
+    <string name="runtime_version_compat_desc">兼容版本</string>
+
+    <!-- FileBrowserAdapter 消息 -->
+    <string name="filebrowser_file_type">文件</string>
+
+    <!-- GogClientFragment 下载状态 -->
+    <string name="gog_download_status_getting_link">获取链接中</string>
+    <string name="gog_download_status_downloading">下载中</string>
+    <string name="gog_download_status_completed">已完成</string>
+    <string name="gog_installed_and_added">已安装并添加到主页: %s</string>
+
+    <!-- ControlEditDialogMD 消息 -->
+    <string name="editor_copy_suffix">副本</string>
+    <string name="editor_control_copy">控件 副本</string>
+
+    <!-- InitializationFragment 组件描述 -->
+    <string name="init_component_gl4es_desc">OpenGL2.0转换为OpenGL ES兼容层</string>
+    <string name="init_component_sdl_desc">跨平台多媒体和输入处理库</string>
+    <string name="init_component_netcorehost_desc">.NET核心运行时宿主</string>
+    <string name="init_component_dotnet_desc">.NET10运行时环境</string>
+    <string name="init_component_monomod_desc">MonoMod是一个通用的.NET程序集模组化工具</string>
+    <string name="init_component_patches_desc">游戏修复补丁</string>
+
+    <!-- EditControlDialog 消息 -->
+    <string name="editor_control_name_label">控件名称:</string>
+    <string name="editor_control_type_label">类型:</string>
+    <string name="editor_control_type_button">按钮</string>
+    <string name="editor_control_type_joystick">摇杆</string>
+    <string name="editor_position_x_label">X:</string>
+    <string name="editor_position_y_label">Y:</string>
+    <string name="editor_size_width_label">宽:</string>
+    <string name="editor_size_height_label">高:</string>
+    <string name="editor_keycode_sdl">按键码 (SDL):</string>
+    <string name="editor_opacity_label">透明度: %d%%</string>
+    <string name="editor_joystick_keys">摇杆按键 [上,右,下,左]:</string>
+    <string name="editor_joystick_key_mapping">摇杆键值映射</string>
+    <string name="editor_joystick_key_mapping_desc">为摇杆的四个方向分别设置键值（默认：WASD）</string>
+    <string name="editor_joystick_key_mapping_value">%1$s, %2$s, %3$s, %4$s</string>
+    <string name="editor_joystick_key_up">上方向</string>
+    <string name="editor_joystick_key_right">右方向</string>
+    <string name="editor_joystick_key_down">下方向</string>
+    <string name="editor_joystick_key_left">左方向</string>
+    <string name="editor_joystick_key_reset_wasd">重置为 WASD</string>
+    <string name="editor_save_button_label">保存</string>
+
+    <!-- ControlShapeManager 消息 -->
+    <string name="control_shape_rectangle">矩形</string>
+    <string name="control_shape_circle">圆形</string>
+
+    <!-- ControlJoystickModeManager 消息 -->
+    <string name="editor_mode_keyboard">键盘模式</string>
+    <string name="editor_mode_mouse">鼠标模式</string>
+    <string name="editor_mode_xbox_controller">XBOX控制器模式</string>
+
+    <!-- RuntimeSelectorManager 消息 -->
+    <string name="runtime_version_latest_recommended">最新版本 - 推荐使用</string>
+    <string name="runtime_version_stable_recommended">稳定版本 - 推荐使用</string>
+    <string name="runtime_version_stable">稳定版本</string>
+
+    <!-- GameDeletionManager 消息 -->
+    <string name="delete_shortcut_message">确定要从列表中移除 %s 吗？\n\n注意：这只是移除快捷方式，不会删除实际文件</string>
+    <string name="delete_game_message_full">确定要删除 %s 吗？\n\n注意：这将同时删除游戏文件</string>
+
+    <!-- ControlLayoutFragment 消息 -->
+    <string name="control_layout_copy_suffix">(副本)</string>
+    <string name="control_layout_copy_suffix_numbered">(副本 %d)</string>
+    <string name="control_layout_keyboard_mode">键盘模式</string>
+    <string name="control_layout_gamepad_mode">手柄模式</string>
+    <string name="control_layout_imported">导入的布局</string>
+    <string name="control_layout_preset_keyboard">键盘模式布局</string>
+    <string name="control_layout_preset_gamepad">手柄模式布局</string>
+    <string name="control_layout_default_name">默认布局</string>
+
+    <!-- FileBrowserFragment 消息 -->
+    <string name="filebrowser_select_file_generic">选择文件</string>
+    <string name="filebrowser_select_game_file">选择游戏文件</string>
+    <string name="filebrowser_select_modloader_file">选择 ModLoader 文件</string>
+
+    <!-- KeySelectorDialog 消息 -->
+    <string name="editor_keyboard">键盘</string>
+
+    <!-- GameAdapter 消息 -->
+    <string name="game_shortcut">快捷方式</string>
+    <string name="game_shortcut_with_desc">🔗 %s (快捷方式)</string>
+
+    <!-- ControlEditorOperations 消息 -->
+    <string name="editor_default_button_name">按钮</string>
+    <string name="editor_default_touchpad_name">触控板</string>
+    <string name="editor_default_mousewheel_name">鼠标滚轮</string>
+    <string name="editor_default_text_name">文本</string>
+    <string name="editor_stick_right">右</string>
+    <string name="editor_stick_left">左</string>
+
+    <!-- GameLaunchDelegate 消息 -->
+    <string name="game_launch_failed">启动失败</string>
+    <string name="game_launch_assembly_path_empty">程序集路径为空</string>
+    <string name="game_launch_assembly_not_exist">程序集文件不存在: %s</string>
+    <string name="game_launch_set_params_failed">设置启动参数失败: %s</string>
+
+    <!-- UnifiedEditorSettingsDialog XML 消息 -->
+    <string name="editor_game_settings_title">游戏设置</string>
+    <string name="editor_enter_edit_mode_text">进入编辑模式</string>
+    <string name="editor_add_controls_section">添加控件</string>
+    <string name="editor_add_button_text">添加按键</string>
+    <string name="editor_add_joystick_text">添加摇杆</string>
+    <string name="editor_add_text_text">添加文本</string>
+    <string name="editor_save_layout_text">保存布局</string>
+    <string name="editor_fps_display">FPS 显示</string>
+    <string name="editor_hide_controls">隐藏控件</string>
+    <string name="editor_exit_game">退出游戏</string>
+
+    <!-- KeySelectorDialog XML 消息 -->
+    <string name="editor_select_key_title">选择按键</string>
+    <string name="editor_keyboard_keys">键盘映射</string>
+    <string name="editor_gamepad_keys">手柄映射</string>
+
+    <!-- ControlEditDialogMD 分类标签 -->
+    <string name="editor_category_basic">基本信息</string>
+    <string name="editor_category_position">位置大小</string>
+    <string name="editor_category_appearance">外观</string>
+    <string name="editor_category_keymap">键值设置</string>
+    <string name="editor_category_basic_desc">基本信息</string>
+    <string name="editor_category_position_desc">位置大小</string>
+    <string name="editor_category_appearance_desc">外观样式</string>
+    <string name="editor_category_keymap_desc">键值设置</string>
+    
+    <!-- ControlEditDialogMD 按钮 -->
+    <string name="editor_delete">删除</string>
+    <string name="editor_copy">复制</string>
+    <string name="editor_save_button">保存</string>
+    <string name="editor_close">关闭</string>
+    
+    <!-- Content Basic Info -->
+    <string name="editor_control_name">控件名称</string>
+    <string name="editor_control_name_desc">设置控件的显示名称</string>
+    <string name="editor_control_name_hint">控件名称</string>
+    <string name="editor_text_content">文本内容</string>
+    <string name="editor_text_content_desc">设置文本控件显示的文本内容</string>
+    <string name="editor_text_content_hint">文本内容</string>
+    <string name="editor_control_type">控件类型</string>
+    <string name="editor_control_type_desc">选择控件类型（按钮、摇杆或手柄控件）</string>
+    <string name="editor_control_shape">控件形状</string>
+    <string name="editor_control_shape_desc">选择控件形状（矩形或圆形）</string>
+    <string name="editor_joystick_mode">摇杆模式</string>
+    <string name="editor_joystick_mode_desc">选择摇杆的工作模式</string>
+    <string name="editor_joystick_stick_select">摇杆选择</string>
+    <string name="editor_attack_mode">攻击模式</string>
+    <string name="editor_attack_mode_hold">长按 - 按住鼠标左键不放</string>
+    <string name="editor_attack_mode_click">点击 - 快速连续点击</string>
+    <string name="editor_attack_mode_continuous">持续 - 保持按住状态</string>
+    <string name="editor_mouse_range">鼠标移动范围</string>
+    <string name="editor_mouse_range_left">左</string>
+    <string name="editor_mouse_range_top">上</string>
+    <string name="editor_mouse_range_right">右</string>
+    <string name="editor_mouse_range_bottom">下</string>
+    <string name="editor_mouse_speed">速度</string>
+    <string name="editor_double_click_joystick">双击模拟摇杆</string>
+    <string name="editor_double_click_joystick_desc">双击触控板时模拟摇杆移动</string>
+    <string name="editor_mousewheel_orientation">水平滚动</string>
+    <string name="editor_mousewheel_orientation_desc">开启后使用左右滑动控制滚轮</string>
+    <string name="editor_mousewheel_reverse">反转方向</string>
+    <string name="editor_mousewheel_reverse_desc">反转滚轮滚动方向</string>
+    <string name="editor_mousewheel_sensitivity">滚轮灵敏度</string>
+    <string name="editor_mousewheel_sensitivity_desc">滑动多少像素触发一次滚轮事件</string>
+    <string name="editor_mousewheel_ratio">滚轮速度倍率</string>
+    <string name="editor_mousewheel_ratio_desc">滚轮事件的强度倍数</string>
+    <string name="editor_combo_keys">组合键映射</string>
+    <string name="editor_combo_keys_desc">为摇杆方向设置组合手柄按钮（如R+B）</string>
+    <string name="editor_combo_keys_not_set">未设置</string>
+    <string name="editor_pass_through">触摸穿透</string>
+    <string name="editor_pass_through_desc">开启后触摸此控件也会触发游戏点击</string>
+    
+    <!-- Content Position Size -->
+    <string name="editor_position_x">X位置</string>
+    <string name="editor_position_x_desc">设置控件的X位置</string>
+    <string name="editor_position_y">Y位置</string>
+    <string name="editor_position_y_desc">设置控件的Y位置</string>
+    <string name="editor_joystick_size">大小</string>
+    <string name="editor_joystick_size_desc">设置摇杆的大小（宽度和高度相等）</string>
+    <string name="editor_width">宽度</string>
+    <string name="editor_width_desc">设置控件的宽度</string>
+    <string name="editor_height">高度</string>
+    <string name="editor_height_desc">设置控件的高度</string>
+    <string name="editor_auto_size">自适应尺寸</string>
+    <string name="editor_auto_size_desc">锁定宽高比，调整宽度时高度自动匹配</string>
+    
+    <!-- Content Appearance -->
+    <string name="editor_opacity_title">背景透明度</string>
+    <string name="editor_opacity_desc">设置控件背景的透明度</string>
+    <string name="editor_border_opacity">边框透明度</string>
+    <string name="editor_border_opacity_desc">设置控件边框的透明度</string>
+    <string name="editor_text_opacity">文本透明度</string>
+    <string name="editor_text_opacity_desc">设置控件文本的透明度</string>
+    <string name="editor_stick_opacity">摇杆圆心透明度</string>
+    <string name="editor_stick_opacity_desc">设置摇杆圆心的透明度</string>
+    <string name="editor_stick_knob_size">摇杆圆心大小</string>
+    <string name="editor_stick_knob_size_desc">设置摇杆圆心的大小比例</string>
+    <string name="editor_visible_in_game">游戏内可见</string>
+    <string name="editor_visible_in_game_desc">控制控件在游戏中的可见性</string>
+    <string name="editor_bg_color">背景颜色</string>
+    <string name="editor_bg_color_desc">设置控件的背景颜色</string>
+    <string name="editor_corner_radius">圆角度</string>
+    <string name="editor_corner_radius_desc">设置控件的圆角大小</string>
+    <string name="editor_stroke_color">边框颜色</string>
+    <string name="editor_stroke_color_desc">设置控件的边框颜色</string>
+    <string name="editor_rotation">旋转角度</string>
+    <string name="editor_rotation_desc">设置控件的旋转角度（0-360度）</string>
+    
+    <!-- Content Keymap -->
+    <string name="editor_key_mapping">按键映射</string>
+    <string name="editor_key_mapping_desc">设置控件对应的按键</string>
+    <string name="editor_key_not_bound">未绑定</string>
+    <string name="editor_toggle_mode">切换模式</string>
+    <string name="editor_toggle_mode_desc">按一次开启，再按一次关闭</string>
+    
+    <!-- Settings Controls -->
+    <string name="settings_control_opacity">虚拟手柄透明度</string>
+    <string name="settings_control_opacity_desc">调整屏幕手柄的透明度(未实现)</string>
+    <string name="settings_vibration">振动反馈</string>
+    <string name="settings_vibration_desc">按键时提供振动反馈</string>
+
+    <string name="virtual_controller_as_first">虚拟手柄作为第一个控制器</string>
+    <string name="virtual_controller_as_first_desc">将虚拟手柄注册为第一个控制器（某些游戏只识别第一个控制器）</string>
+    <string name="settings_virtual_controller_vibration">虚拟手柄振动</string>
+    <string name="settings_virtual_controller_vibration_desc">启用虚拟手柄的振动反馈</string>
+    <string name="settings_virtual_controller_vibration_intensity">虚拟手柄振动强度</string>
+    <string name="settings_virtual_controller_vibration_intensity_desc">调整虚拟手柄的振动强度</string>
+    <string name="settings_back_button_open_menu">返回键打开游戏菜单</string>
+    <string name="settings_back_button_open_menu_desc">按返回键时打开游戏内菜单</string>
+    <string name="settings_keyboard_type">键盘类型</string>
+    <string name="settings_keyboard_type_desc">选择使用虚拟键盘或系统键盘</string>
+    <string name="keyboard_type_virtual">虚拟键盘</string>
+    <string name="keyboard_type_system">系统键盘</string>
+    <string name="settings_joystick_mouse_mode_info">右摇杆鼠标模式的速度、范围和攻击模式设置已移至控件编辑器中，长按控件即可进入编辑模式。</string>
+    
+    <!-- Settings Launcher -->
+    <string name="settings_auto_import">自动导入游戏</string>
+    <string name="settings_auto_import_desc">启动时自动扫描并导入游戏</string>
+    <string name="settings_show_hidden">显示隐藏游戏</string>
+    <string name="settings_show_hidden_desc">在游戏列表中显示已隐藏的游戏</string>
+    <string name="settings_off">关闭</string>
+    
+    <!-- GOG Client -->
+    <string name="gog_login_title">登录 GOG</string>
+    <string name="gog_login_subtitle">访问您的 DRM-Free 游戏库</string>
+    <string name="gog_email_hint">邮箱地址</string>
+    <string name="gog_email_label">邮箱地址</string>
+    <string name="gog_password_hint">密码</string>
+    <string name="gog_password_label">密码</string>
+    <string name="gog_visit_website">访问官网</string>
+    <string name="gog_login_button">登录</string>
+    <string name="gog_user">GOG 用户</string>
+    <string name="gog_library">游戏库</string>
+    <string name="gog_search_hint">搜索游戏</string>
+    <string name="gog_search_placeholder">搜索游戏...</string>
+    <string name="gog_logout_button">登出</string>
+    <string name="gog_logout">登出</string>
+    <string name="gog_no_games_found">没有找到游戏</string>
+    <string name="gog_no_games_message">您的 GOG 库中暂无游戏</string>
+    <string name="gog_loading">加载中...</string>
+    <string name="gog_select_game">选择一个游戏</string>
+    <string name="installed">已安装</string>
+    
+    <!-- Local Import -->
+    <string name="import_game_title">导入游戏</string>
+    <string name="import_processing">正在处理...</string>
+    <string name="import_progress">进度</string>
+    <string name="import_step">步骤</string>
+    <string name="import_preparing">准备开始...</string>
+    
+    <!-- Settings Developer -->
+    <string name="settings_debug_options">调试选项</string>
+    
+    <!-- Settings Game -->
+    <string name="renderer_desc">选择图形渲染后端</string>
+    
+    <!-- Settings Misc -->
+    <string name="settings_theme_switch">切换应用主题外观</string>
+    <string name="background_custom">自定义背景设置</string>
+    <string name="background_custom_desc">选择图片或视频作为启动器背景</string>
+    <string name="background_video">视频背景</string>
+    <string name="background_video_desc">选择视频文件作为动态背景</string>
+    <string name="background_restore_default">恢复默认背景</string>
+    <string name="background_restore_default_desc">恢复为系统默认背景</string>
+    <string name="language_select">选择应用界面语言</string>
+    
+    <!-- Initialization Fragment -->
+    <string name="init_legal_title">法律声明</string>
+    <string name="init_legal_subtitle">请仔细阅读以下条款</string>
+    <string name="init_legal_important">⚠ 重要声明</string>
+    <string name="init_legal_important_message">本软件完全免费且开源！如果您是付费购买获得，请立即申请退款并举报卖家。任何倒卖、转售本软件的行为均属违法，开发者保留追究法律责任的权利。</string>
+    <string name="init_legal_official_download">官方下载：https://github.com/FireworkSky/RotatingartLauncher</string>
+    <string name="init_legal_terms">1. 软件性质：本启动器为第三方开源工具，需用户自行提供合法授权的游戏文件。\n\n2. 版权声明：您必须拥有所运行游戏的合法授权副本，开发者与游戏版权方无关联。\n\n3. 使用限制：仅供个人学习研究使用，不得用于商业目的或逆向工程。\n\n4. 免责声明：软件按现状提供，开发者不对使用导致的任何损失负责。\n\n5. 隐私保护：不收集任何个人信息，所有数据仅存储在本地。\n\n6. 权限说明：需要存储权限以访问游戏文件，仅访问游戏相关文件。\n\n7. 法律责任：用户违法使用由用户自行承担责任。\n\n8. 条款变更：开发者保留随时修改本声明的权利。</string>
+    <string name="init_legal_accept_hint">点击【接受并继续】即表示同意上述条款</string>
+    <string name="init_exit">退出</string>
+    <string name="init_accept_and_continue">接受并继续</string>
+    <string name="init_permission_desc">启动器需要存储权限以读取和管理游戏文件</string>
+    <string name="init_skip">跳过</string>
+    <string name="permission_grant">授予权限</string>
+    
+    <!-- Control Layout Fragment -->
+    <string name="control_no_layout">暂无控制布局</string>
+    <string name="control_no_layout_hint">点击右下角按钮创建新布局</string>
+    <string name="control_new_layout_button">新建布局</string>
+    
+    <!-- Main Activity -->
+    <string name="main_select_game_hint">请选择一个游戏</string>
+    <string name="main_select_game_instruction">点击左侧游戏开始</string>
+    <string name="main_enable_modloader">启用 ModLoader</string>
+    <string name="main_runtime_title">.NET 运行时</string>
+    
+    <!-- Runtime Selector Dialog -->
+    <string name="runtime_selector_title_text">.NET 运行时版本</string>
+    <string name="runtime_current_version">当前版本</string>
+    <string name="runtime_select_version">选择版本</string>
+    <string name="runtime_not_installed">未安装</string>
+    
+    <!-- Two Factor Dialog -->
+    <string name="two_factor_email_title">邮箱验证</string>
+    <string name="two_factor_email_message">请输入发送到您邮箱的 4 位验证码</string>
+    <string name="two_factor_case_sensitive">验证码区分大小写</string>
+    
+    <!-- Version Selection Dialog -->
+    <string name="version_select_title">选择版本</string>
+    <string name="version_game_version">游戏版本</string>
+    <string name="version_modloader_version">ModLoader 版本</string>
+    <string name="version_start_install">开始安装</string>
+    
+    <!-- GOG Download Progress Dialog -->
+    <string name="gog_download_title">下载游戏</string>
+    <string name="gog_download_game_main">游戏本体</string>
+    <string name="gog_download_waiting">等待中</string>
+    <string name="gog_download_modloader">模组加载器</string>
+    <string name="gog_download_game_progress">游戏进度</string>
+    <string name="gog_download_modloader_progress">模组进度</string>
+    <string name="gog_download_background">后台运行</string>
+    
+    <!-- GOG API Error Messages -->
+    <string name="gog_error_retry_interrupted">重试被中断</string>
+    <string name="gog_error_dns_failed">无法连接到 GOG 服务器 - DNS解析失败。请检查网络连接或尝试使用VPN</string>
+    <string name="gog_error_connection_timeout">连接 GOG 服务器超时。请检查网络连接</string>
+    <string name="gog_error_network_failed">网络请求失败</string>
+    <string name="gog_error_invalid_target_file">目标文件无效</string>
+    <string name="gog_error_cannot_create_download_dir">无法创建下载目录: %s</string>
+    <string name="gog_error_download_failed">下载失败，HTTP %d</string>
+    <string name="gog_error_login_failed_check_credentials">登录失败 - 请检查用户名和密码</string>
+    <string name="gog_error_login_failed_wrong_credentials">登录失败 - 用户名或密码错误</string>
+    <string name="gog_error_login_failed_response_code">登录失败 - 响应码: %d</string>
+    <string name="gog_error_two_factor_redirect">两步验证页面重定向，可能session已失效</string>
+    <string name="gog_error_cannot_access_two_factor">无法访问两步验证页面</string>
+    <string name="gog_error_cannot_get_game_info">无法获取游戏信息</string>
+    <string name="gog_error_not_logged_in">未登录</string>
+    
+    <!-- Import Task Error Messages -->
+    <string name="import_error_game_file_path_empty">游戏文件路径不能为空</string>
+    <string name="import_error_output_directory_empty">输出目录不能为空</string>
+    
+    <!-- Layout Placeholders -->
+    <string name="gog_game_title_placeholder">游戏标题</string>
+    <string name="gog_games_count_placeholder">%d 款游戏</string>
+    <string name="component_name_placeholder">组件名称</string>
+    <string name="component_description_placeholder">组件描述</string>
+    <string name="component_management">组件管理</string>
+    <string name="about_runtime_environment">关于运行时环境</string>
+    <string name="installation_instructions">安装说明</string>
+    <string name="installation_description">这些组件是运行游戏所必需的。首次安装需要解压文件到应用目录，安装过程可能需要 10-30 秒，具体取决于设备性能。</string>
+    <string name="agree_and_install">同意并安装</string>
+    <string name="import_game_subtitle">选择游戏文件和ModLoader(可选)进行导入</string>
+    <string name="import_game_body">游戏本体</string>
+    <string name="import_no_file_selected">未选择文件</string>
+    <string name="import_select_button">选择</string>
+    <string name="game_name_placeholder">游戏名称</string>
+    
+    <!-- File Browser -->
+    <string name="filebrowser_title">文件浏览器</string>
+    <string name="filebrowser_search_hint">搜索文件...</string>
+    <string name="filebrowser_sort">排序</string>
+    <string name="filebrowser_select_file_button">选择文件</string>
+    <string name="filebrowser_storage_permission_required">需要存储权限</string>
+    <string name="filebrowser_storage_permission_desc">请授予存储权限以浏览文件</string>
+    <string name="filebrowser_detail_size">大小</string>
+    <string name="filebrowser_detail_path">路径</string>
+    <string name="filebrowser_detail_modified_time">修改时间</string>
+    <string name="filebrowser_select_prompt">选择一个文件</string>
+    <string name="filebrowser_unknown_time">未知</string>
+    
+    <!-- Panel Edit Control -->
+    <string name="panel_edit_control_layout">编辑控制布局</string>
+    <string name="panel_display_text">显示的文本</string>
+    <string name="panel_input_hint">输入文本</string>
+    <string name="panel_x_coordinate">X 坐标</string>
+    <string name="panel_y_coordinate">Y 坐标</string>
+    <string name="panel_size">尺寸</string>
+    <string name="panel_button_opacity">按键不透明度</string>
+    <string name="panel_visible_in_game">游戏内可见</string>
+    <string name="panel_apply_changes">应用更改</string>
+    <string name="panel_copy_control">复制控件</string>
+    <string name="panel_delete_control">删除控件</string>
+    
+    <!-- Content Descriptions -->
+    <string name="content_desc_delete_game">删除游戏</string>
+    <string name="content_desc_game_icon">游戏图标</string>
+    <string name="content_desc_game_description">游戏描述</string>
+    <string name="content_desc_component_list">需要安装的组件列表</string>
+    <string name="content_desc_agree_install_button">同意并安装组件按钮</string>
+    <string name="content_desc_component_progress">组件安装进度</string>
+    <string name="content_desc_layout_settings">布局设置</string>
+    <string name="content_desc_add_layout">添加布局</string>
+    <string name="content_desc_exit_app_button">退出应用按钮</string>
+    <string name="content_desc_accept_legal_button">接受法律声明并继续按钮</string>
+    <string name="content_desc_skip_permission_button">暂时跳过权限授予按钮</string>
+    <string name="content_desc_grant_permission_button">授予权限按钮</string>
+    <string name="content_desc_settings">设置</string>
+    <string name="content_desc_edit_settings">编辑设置</string>
+    <string name="content_desc_close">关闭</string>
+    <string name="content_desc_back">返回</string>
+    <string name="dialog_title_placeholder">对话框</string>
+    <string name="layout_settings_title">布局设置</string>
+    <string name="import_layout">导入布局</string>
+    <string name="import_preset">导入预设</string>
+    <string name="quick_settings_title">快速设置</string>
+    <string name="game_settings_title">游戏设置</string>
+    <string name="more_settings_developing">更多设置功能开发中...</string>
+    <string name="key_mouse_left">鼠标左键</string>
+    <string name="key_mouse_middle">鼠标中键</string>
+    <string name="key_mouse_right">鼠标右键</string>
+    <string name="key_mouse_wheel_up">滚轮↑</string>
+    <string name="key_mouse_wheel_down">滚轮↓</string>
+    <string name="key_open_keyboard">打开键盘</string>
+    <string name="key_keyboard">键盘</string>
+    <string name="key_touchpad_buttons">触摸板左右键</string>
+    <string name="key_selector_keyboard_mode">键盘</string>
+    <string name="key_selector_gamepad_mode">手柄</string>
+    <string name="key_space">空格</string>
+    <string name="key_enter">回车</string>
+    <string name="key_arrow_up">↑ 上</string>
+    <string name="key_arrow_down">↓ 下</string>
+    <string name="key_arrow_left">← 左</string>
+    <string name="key_arrow_right">→ 右</string>
+    <string name="key_shift_left">Shift (左)</string>
+    <string name="key_shift_right">Shift (右)</string>
+    <string name="key_ctrl_left">Ctrl (左)</string>
+    <string name="key_ctrl_right">Ctrl (右)</string>
+    <string name="key_alt_left">Alt (左)</string>
+    <string name="key_alt_right">Alt (右)</string>
+    <string name="key_numpad_0">小键盘 0</string>
+    <string name="key_numpad_1">小键盘 1</string>
+    <string name="key_numpad_2">小键盘 2</string>
+    <string name="key_numpad_3">小键盘 3</string>
+    <string name="key_numpad_4">小键盘 4</string>
+    <string name="key_numpad_5">小键盘 5</string>
+    <string name="key_numpad_6">小键盘 6</string>
+    <string name="key_numpad_7">小键盘 7</string>
+    <string name="key_numpad_8">小键盘 8</string>
+    <string name="key_numpad_9">小键盘 9</string>
+    <string name="key_numpad_plus">小键盘 +</string>
+    <string name="key_numpad_minus">小键盘 -</string>
+    <string name="key_numpad_multiply">小键盘 *</string>
+    <string name="key_numpad_divide">小键盘 /</string>
+    <string name="key_numpad_period">小键盘 .</string>
+    <string name="key_numpad_enter">小键盘 Enter</string>
+    <string name="key_unknown">未知 (%s)</string>
+    <string name="joystick_right">右摇杆</string>
+    <string name="joystick_left">左摇杆</string>
+    <string name="type_conversion_wip">类型转换功能待实现</string>
+    <string name="input_layout_name">输入布局名称</string>
+    <string name="layout_name_hint">布局名称</string>
+    <string name="layout_name_example">例如：我的布局</string>
+    
+    <!-- File Item -->
+    <string name="file_name_placeholder">文件名</string>
+    <string name="file_type_placeholder">文件类型</string>
+    
+    <!-- Runtime Version -->
+    <string name="runtime_recommended_version">推荐版本</string>
+    
+    <!-- Patch -->
+    <string name="patch_name_placeholder">补丁名称</string>
+    <string name="patch_description_placeholder">补丁描述</string>
+    
+    <!-- Editor Menu -->
+    <string name="menu_item_placeholder">菜单项</string>
+    
+    <!-- Control Layout -->
+    <string name="layout_name_placeholder">布局名称</string>
+    <string name="layout_default_tag">默认</string>
+    <string name="layout_controls_count">5个控件</string>
+    <string name="content_desc_more_options">更多选项</string>
+    
+    <!-- File Selection Card -->
+    <string name="file_optional_tag">可选</string>
+    <string name="file_select_button">选择</string>
+    
+    <!-- Empty State -->
+    <string name="empty_directory_message">当前目录为空</string>
+    
+    <!-- Floating Console -->
+    <string name="developer_console_title">开发者控制台</string>
+    <string name="content_desc_minimize">最小化</string>
+    <string name="content_desc_clear">清除</string>
+    <string name="console_message_count">消息: %d</string>
+    <string name="console_error_count">错误: %d</string>
+    <string name="console_warning_count">警告: %d</string>
+    <string name="console_ready">控制台就绪...\n</string>
+    <string name="console_input_hint">输入命令...</string>
+    <string name="console_send_button">发送</string>
+    
+    <!-- Navigation Menu -->
+    <string name="nav_game">游戏</string>
+    <string name="nav_file">文件</string>
+    <string name="nav_control">控制</string>
+    <string name="nav_download">下载</string>
+    <string name="nav_add_game">添加游戏</string>
+    <string name="nav_multiplayer">联机</string>
+    <string name="nav_settings">设置</string>
+    
+    <!-- Multiplayer -->
+    <string name="multiplayer_title">联机</string>
+    <string name="multiplayer_settings">联机设置</string>
+    <string name="multiplayer_network_name">网络名称</string>
+    <string name="multiplayer_network_name_hint">输入房间名称</string>
+    <string name="multiplayer_network_secret">网络密钥</string>
+    <string name="multiplayer_network_secret_hint">输入房间密码</string>
+    <string name="multiplayer_status_disconnected">未连接</string>
+    <string name="multiplayer_status_connecting">正在连接...</string>
+    <string name="multiplayer_status_connected">已连接</string>
+    <string name="multiplayer_join_network">加入网络</string>
+    <string name="multiplayer_disconnect">断开连接</string>
+    <string name="multiplayer_network_nodes">网络节点</string>
+    <string name="multiplayer_local_node">本机</string>
+    <string name="multiplayer_online">在线</string>
+    <string name="multiplayer_waiting_players">等待其他玩家...</string>
+    <string name="multiplayer_share_hint">分享网络名称和密钥给好友\n让他们加入同一个网络</string>
+    <string name="multiplayer_not_connected">未连接网络</string>
+    <string name="multiplayer_connect_hint">输入网络名称和密钥后点击\"加入网络\"开始联机</string>
+    <string name="multiplayer_powered_by">基于 EasyTier P2P 组网\n支持 NAT 穿透，无需公网 IP</string>
+    <string name="multiplayer_connection_error">连接错误</string>
+    <string name="multiplayer_connect_failed">连接失败: %s</string>
+    <string name="multiplayer_disconnect_failed">断开失败: %s</string>
+    <string name="multiplayer_nodes_count">%d 个节点</string>
+    <string name="multiplayer_unknown_host">未知主机</string>
+    
+    <!-- Control Layout Menu -->
+    <string name="action_edit_layout">编辑布局</string>
+    <string name="action_rename">重命名</string>
+    <string name="action_duplicate_layout">复制布局</string>
+    <string name="action_set_default">设为默认</string>
+    <string name="action_export_layout">导出布局</string>
+    
+    <!-- Control Editor Menu -->
+    <string name="menu_add_cross">添加方向键</string>
+    <string name="menu_load_default_layout">加载默认布局</string>
+    <string name="menu_clear_all_controls">清空所有控件</string>
+    
+    <!-- Game File Browser -->
+    <string name="mod_manager_title">游戏文件浏览器</string>
+    <string name="mod_manager_path">路径</string>
+    <string name="mod_manager_new_folder">新建文件夹</string>
+    <string name="mod_manager_refresh">刷新</string>
+    <string name="mod_manager_copy">复制</string>
+    <string name="mod_manager_move">移动</string>
+    <string name="mod_manager_paste">粘贴</string>
+    <string name="mod_manager_delete">删除</string>
+    <string name="mod_manager_empty">文件夹为空</string>
+    <string name="mod_manager_file_selected">已选择: %s</string>
+    <string name="mod_manager_no_selection">请先选择文件或文件夹</string>
+    <string name="mod_manager_copied">已复制: %s</string>
+    <string name="mod_manager_moved">已移动: %s</string>
+    <string name="mod_manager_copied_success">复制成功: %s</string>
+    <string name="mod_manager_moved_success">移动成功: %s</string>
+    <string name="mod_manager_deleted">已删除: %s</string>
+    <string name="mod_manager_refreshed">已刷新</string>
+    <string name="mod_manager_folder_created">文件夹创建成功</string>
+    <string name="mod_manager_folder_create_failed">文件夹创建失败</string>
+    <string name="mod_manager_delete_title">删除</string>
+    <string name="mod_manager_delete_message">确定要删除 %s 吗？</string>
+    <string name="mod_manager_delete_failed">删除失败</string>
+    <string name="mod_manager_overwrite_title">覆盖文件</string>
+    <string name="mod_manager_overwrite_message">文件 %s 已存在，是否覆盖？</string>
+    <string name="mod_manager_overwrite">覆盖</string>
+    <string name="mod_manager_no_file_to_paste">没有可粘贴的文件</string>
+    <string name="mod_manager_paste_failed">粘贴失败: %s</string>
+    <string name="mod_manager_enter_folder_name">请输入文件夹名称</string>
+    <string name="mod_manager_create">创建</string>
+    <string name="mod_manager_invalid_path">无效的路径</string>
+    <string name="mod_manager_grid_view">网格视图</string>
+    <string name="mod_manager_list_view">列表视图</string>
+    <string name="mod_manager_view_mode_grid">已切换到网格视图</string>
+    <string name="mod_manager_view_mode_list">已切换到列表视图</string>
+    <string name="mod_manager_home">主目录</string>
+    <string name="settings_about">关于</string>
+    <string name="editor_toggle_touch">开启触摸事件</string>
+    <string name="patch_dialog_import">导入补丁</string>
+    <string name="patch_dialog_import_successful">补丁包导入成功</string>
+    <string name="patch_dialog_import_failed">补丁包导入失败，检查日志获取更多信息</string>
+    <string name="patch_dialog_import_title">⚠️警告</string>
+    <string name="patch_dialog_import_message">补丁包有装载可执行文件的能力。\n安装含有恶意代码的补丁包可能导致：\n- 个人数据和隐私信息泄露\n- 设备损坏\n安装前请确认：\n- 您信任此补丁包的来源\n- 您了解补丁包的具体功能\n- 您已备份重要数据\n继续安装表示您已了解并接受相关风险。</string>
+    
+    <!-- 控件包下载 -->
+    <string name="pack_category_all">全部</string>
+    <string name="pack_store">控件商店</string>
+    <string name="pack_download_title">控件商店</string>
+    <string name="pack_search_hint">搜索控件包...</string>
+    <string name="pack_loading">正在加载控件包列表...</string>
+    <string name="pack_empty">暂无控件包</string>
+    <string name="pack_empty_hint">稍后再来查看或下拉刷新</string>
+    <string name="pack_load_failed">加载失败</string>
+    <string name="pack_retry">重试</string>
+    <string name="pack_author_format">作者: %s</string>
+    <string name="pack_version_format">版本: %s</string>
+    <string name="pack_download">下载</string>
+    <string name="pack_installed">已安装</string>
+    <string name="pack_update_available">可更新</string>
+    <string name="pack_downloading">下载中</string>
+    <string name="pack_installing">安装中</string>
+    <string name="pack_apply">应用</string>
+    <string name="pack_update">更新</string>
+    <string name="pack_delete">删除</string>
+    <string name="pack_delete_title">删除控件包</string>
+    <string name="pack_delete_confirm">确定要删除控件包 \"%s\" 吗？</string>
+    <string name="pack_author_label">作者</string>
+    <string name="pack_version_label">版本</string>
+    <string name="pack_installed_version">已安装版本</string>
+    <string name="pack_tags_label">标签</string>
+    <string name="pack_size_label">大小</string>
+    <string name="pack_download_failed">下载失败: %s</string>
+    <string name="pack_installed_success">控件包 \"%s\" 安装成功</string>
+    <string name="pack_applied_success">控件包 \"%s\" 已应用到布局</string>
+    <string name="pack_apply_failed">应用控件包失败</string>
+    <string name="pack_deleted_success">控件包 \"%s\" 已删除</string>
+    <string name="pack_delete_failed">删除控件包失败</string>
+    <string name="pack_no_preview">暂无预览图</string>
+    <string name="pack_preview_title">控件包预览</string>
+    <string name="pack_unknown_author">未知作者</string>
+    <string name="pack_preview_image">预览图 %d</string>
+    
+    <!-- 控件包导出 -->
+    <string name="pack_export_title">导出控件包</string>
+    <string name="pack_export_author">作者名称</string>
+    <string name="pack_export_description">控件包描述</string>
+    <string name="pack_export_version">版本号</string>
+    <string name="pack_export_success">控件包已导出</string>
+    <string name="pack_export_failed">导出失败: %s</string>
+    
+    <!-- 控件纹理 -->
+    <string name="control_texture_selector_title">纹理选择</string>
+    <string name="control_texture_select_hint">选择纹理文件应用到控件</string>
+    <string name="control_texture_clear">清除纹理</string>
+    <string name="control_texture_empty">暂无纹理文件</string>
+    <string name="control_texture_empty_hint">点击下方按钮导入纹理文件</string>
+    <string name="control_texture_applied">纹理已应用</string>
+    <string name="control_texture_cleared">纹理已清除</string>
+    <string name="control_texture_import">导入纹理</string>
+    <string name="control_texture_imported">已导入: %s</string>
+    <string name="control_texture_import_failed">导入失败</string>
+    <string name="control_texture_unsupported_format">不支持的格式，支持 PNG、JPG、WebP、SVG</string>
+    <string name="control_texture_normal">普通状态</string>
+    <string name="control_texture_pressed">按下状态</string>
+    <string name="control_texture_toggled">切换状态</string>
+    <string name="control_texture_background">背景</string>
+    <string name="control_texture_knob">摇杆头</string>
+    <string name="control_texture_not_supported">不支持纹理</string>
+    <string name="control_texture_enabled">已配置纹理</string>
+    <string name="control_texture_disabled">未配置纹理</string>
+    <string name="editor_texture">纹理设置</string>
+    <string name="editor_texture_desc">为控件设置自定义纹理图像</string>
+
+    <!-- 开发者相关 -->
+    <string name="future_version_contributor">Future 版本贡献者</string>
+    
+    <!-- 赞助商相关 -->
+    <string name="sponsors_title">荣耀星河</string>
+    <string name="sponsors_wall_title">荣耀星河</string>
+    <string name="sponsors_wall_desc">致敬每一位星辰守护者</string>
+    <string name="sponsors_loading">正在加载赞助者列表...</string>
+    <string name="sponsors_error">加载失败</string>
+    <string name="sponsors_empty">暂无赞助者</string>
+    <string name="sponsors_count_format">%d 人</string>
+    <string name="sponsors_count_total">%d 位赞助者</string>
+    <string name="sponsors_join_date_format">加入于 %s</string>
+    <string name="become_sponsor">成为赞助者</string>
+    <string name="error_open_browser">无法打开浏览器</string>
+    <string name="back">返回</string>
+    <string name="retry">重试</string>
+    <string name="view">查看</string>
+    <string name="sponsors_tip_gesture">双击重置视图 · 捏合缩放 · 拖动探索</string>
+    
+    <!-- Plugin Manager -->
+    <string name="plugin_manager_title">插件管理</string>
+    <string name="plugin_manager_subtitle">管理游戏安装插件，添加或删除外部插件</string>
+    <string name="manage_plugins">管理插件</string>
+    <string name="add_plugin">添加插件</string>
+    <string name="installed_plugins">已安装插件</string>
+    <string name="available_plugins">可用插件</string>
+    <string name="plugin_count">已安装 %d 个插件</string>
+    <string name="no_plugins_available">暂无可用插件</string>
+    <string name="no_plugins_installed">暂无已安装插件</string>
+    <string name="no_plugins_hint">点击上方按钮添加插件</string>
+    <string name="plugin_source_builtin">内置</string>
+    <string name="plugin_source_external">外部</string>
+    <string name="plugin_import_success">插件导入成功: %s</string>
+    <string name="plugin_import_failed">插件导入失败</string>
+    <string name="plugin_restart_required_title">需要重启</string>
+    <string name="plugin_restart_required_message">新导入的插件需要重启应用后才能生效</string>
+    <string name="restart_now">立即重启</string>
+    <string name="plugin_delete_title">删除插件</string>
+    <string name="plugin_delete_message">确定要删除插件 %s 吗？</string>
+    <string name="plugin_delete_success">插件已删除</string>
+    <string name="plugin_delete_failed">插件删除失败</string>
+    <string name="plugin_delete_not_found">未找到对应的插件文件</string>
+    <string name="plugin_cannot_delete_builtin">内置插件不可删除</string>
+    <string name="plugin_id_label">插件ID: %s</string>
+    <string name="plugin_games_label">支持的游戏:</string>
+    <string name="plugin_source_label">来源: </string>
+    <string name="delete">删除</string>
+    
+    <!-- Game Import -->
+    <string name="select_game_file">选择游戏文件</string>
+    <string name="select_game_file_simple_hint">支持 ZIP 格式（游戏本体或模组加载器）</string>
+    <string name="select_gog_sh_hint">选择 GOG 安装脚本 (.sh)</string>
+    <string name="game_name_input_hint">游戏名称（自动检测）</string>
+    <string name="start_import">开始导入</string>
+    <string name="import_game_simple_subtitle">选择游戏 ZIP 文件即可开始导入</string>
+    <string name="import_game_sh_subtitle">选择 GOG 安装脚本即可开始导入，游戏名称将自动检测</string>
+    <string name="import_hint_zip">• 支持 ZIP 格式的游戏文件</string>
+    <string name="import_hint_sh_file">• 支持 GOG .sh 安装脚本</string>
+    <string name="import_hint_auto_detect">• 自动识别游戏类型和名称</string>
+    <string name="import_hint_examples">• 如 tModLoader、Stardew Valley、Celeste 等</string>
+    <string name="import_hint_gog_examples">• 如 Terraria、Celeste、Hollow Knight 等</string>
+    <string name="import_select_plugin_hint">选择一个游戏插件开始导入流程</string>
+    <string name="import_select_modloader_first">请先选择 ModLoader 文件</string>
+    <string name="import_select_mod_loader_first">请先选择模组加载器文件</string>
+    <string name="select_files">选择文件</string>
+    <string name="select_file">选择文件</string>
+    <string name="import_no_plugin_available">没有可用的安装插件</string>
+    <string name="import_no_plugin_selected">未选择插件</string>
+    <string name="import_plugin_not_match">所选插件不匹配当前文件</string>
+    <string name="import_cancelled">导入已取消</string>
+    <string name="import_install_method">安装方式</string>
+    <string name="import_required">必需</string>
+    
+    <!-- Import Steps -->
+    <string name="import_step1_title">选择游戏本体</string>
+    <string name="import_step2_title">选择模组加载器</string>
+    <string name="import_step3_title">确认导入</string>
+    <string name="next_step">下一步</string>
+    <string name="import_select_game_body">选择游戏本体文件</string>
+    <string name="import_click_to_select_sh">点击选择已下载的 .sh 安装文件</string>
+    <string name="import_game_detected_label">检测到游戏</string>
+    <string name="import_mod_loader">模组加载器</string>
+    <string name="import_select_sh_file">请选择游戏安装文件 (.sh)</string>
+    <string name="import_select_zip_file">请选择模组加载器文件 (.zip)</string>
+    <string name="import_local_select">本地选择</string>
+    <string name="import_local_select_hint">从设备中选择已下载的 ZIP 文件</string>
+    <string name="import_online_download">在线下载</string>
+    <string name="import_online_download_hint">从网络下载模组加载器</string>
+    <string name="import_summary">导入摘要</string>
+    <string name="import_progress_title">导入进度</string>
+    <string name="init_component_rootfs_desc">Box64以及Debian rootfs</string>
+    <string name="init_component_x64lib_desc">Box64 x86_64 库 (libstdc++, libssl 等)</string>
+    <string name="init_component_runtime_libs_desc">运行时库 (Box64, 渲染器等)</string>
+    <string name="init_extracting_runtime_libs">解压运行时库...</string>
+    <string name="init_extraction_failed_simple">解压失败</string>
+    
+    <!-- Settings Developer -->
+    <string name="settings_experimental_features">实验性功能</string>
+    
+    <!-- Settings Misc -->
+    <string name="settings_custom_background">自定义背景</string>
+    <string name="settings_custom_background_desc">选择图片或视频作为背景</string>
+    <string name="settings_background_opacity">背景透明度</string>
+    <string name="settings_video_playback_speed">视频播放速度</string>
+    
+    <!-- Game Import -->
+    <string name="import_game_title_text">导入游戏</string>
+    <string name="import_game_subtitle_text">选择游戏本体和模组加载器文件开始导入</string>
+    
+    <!-- Settings About -->
+    <string name="about_version_label">版本</string>
+    <string name="about_afdian_sponsor">爱发电赞助</string>
+    <string name="about_patreon_sponsor">Patreon 赞助</string>
+    <string name="about_sponsor_button">赞助</string>
+    <string name="about_discord_community">Discord 社区</string>
+    <string name="about_qq_group">QQ 交流群</string>
+    <string name="about_join_button">加入</string>
+    <string name="about_project_team">项目团队</string>
+    <string name="about_project_author">项目作者</string>
+    <string name="about_developer">开发者</string>
+    <string name="about_github">GitHub</string>
+
+    <!-- Extracted Strings (2026-02) -->
+    <string name="control_editor_advanced">高级</string>
+    <string name="control_editor_apply">应用</string>
+    <string name="control_editor_arrow_keys_compact">方向键 ↑←↓→</string>
+    <string name="control_editor_back_to_game">返回游戏</string>
+    <string name="control_editor_back_to_show">按返回键可重新显示</string>
+    <string name="control_editor_border_width">边框宽度</string>
+    <string name="control_editor_button_label">按钮</string>
+    <string name="control_editor_button_settings">按钮设置</string>
+    <string name="control_editor_change_image">更换图片</string>
+    <string name="control_editor_clear_all">清空</string>
+    <string name="control_editor_collapse_menu">收起菜单</string>
+    <string name="control_editor_component_library">组件库</string>
+    <string name="control_editor_connecting">连接中...</string>
+    <string name="control_editor_custom_shape">自定义形状</string>
+    <string name="control_editor_custom_shape_hint">使用纹理透明度作为控件形状，透明区域不响应点击</string>
+    <string name="control_editor_custom_texture">自定义纹理</string>
+    <string name="control_editor_dead_zone">中心死区</string>
+    <string name="control_editor_debug_log">调试日志</string>
+    <string name="control_editor_diag_cleanup">清理测试实例</string>
+    <string name="control_editor_diag_config_generate">配置生成</string>
+    <string name="control_editor_diag_config_parse">配置解析测试</string>
+    <string name="control_editor_diag_instance_start">网络实例启动</string>
+    <string name="control_editor_diag_jni_load">JNI 库加载检查</string>
+    <string name="control_editor_diag_network_collect">网络信息收集</string>
+    <string name="control_editor_diagnosing">诊断中...</string>
+    <string name="control_editor_diagnosis">诊断</string>
+    <string name="control_editor_diag_port_check">端口监听检测 (7777)</string>
+    <string name="control_editor_direction_keys">方向按键</string>
+    <string name="control_editor_divider_color">分隔线颜色</string>
+    <string name="control_editor_done">完成</string>
+    <string name="control_editor_do_not_save">不保存</string>
+    <string name="control_editor_dpad_label">十字键</string>
+    <string name="control_editor_drag">拖动</string>
+    <string name="control_editor_enable_custom_texture">启用自定义纹理</string>
+    <string name="control_editor_enter_edit_mode">进入编辑模式</string>
+    <string name="control_editor_exit_edit_mode">退出编辑模式</string>
+    <string name="control_editor_exit_editor">退出编辑器</string>
+    <string name="control_editor_exit_game">退出游戏</string>
+    <string name="control_editor_expanded_size">展开大小</string>
+    <string name="control_editor_fps_display">FPS 显示</string>
+    <string name="control_editor_full_screen">全屏</string>
+    <string name="control_editor_game_menu">游戏菜单</string>
+    <string name="control_editor_gamepad_arrow_down">手柄 ↓</string>
+    <string name="control_editor_gamepad_arrow_left">手柄 ←</string>
+    <string name="control_editor_gamepad_arrow_right">手柄 →</string>
+    <string name="control_editor_gamepad_arrow_up">手柄 ↑</string>
+    <string name="control_editor_ghost_mode">幽灵模式</string>
+    <string name="control_editor_grid_align_hint">辅助对齐控件位置</string>
+    <string name="control_editor_grid_display">网格显示</string>
+    <string name="control_editor_grid_snap">网格吸附</string>
+    <string name="control_editor_half_screen">半屏</string>
+    <string name="control_editor_hide_controls">隐藏控件</string>
+    <string name="control_editor_hide_floating_ball">隐藏悬浮球(返回键打开)</string>
+    <string name="control_editor_horizontal">水平</string>
+    <string name="control_editor_input_mode">输入模式</string>
+    <string name="control_editor_instructions">操作说明</string>
+    <string name="control_editor_join">加入</string>
+    <string name="control_editor_joystick_knob_opacity">摇杆球透明度</string>
+    <string name="control_editor_joystick_knob_size">摇杆球大小</string>
+    <string name="control_editor_joystick_label">摇杆</string>
+    <string name="control_editor_joystick_settings">摇杆设置</string>
+    <string name="control_editor_label">标签</string>
+    <string name="control_editor_layout_switch">控件布局切换</string>
+    <string name="control_editor_menu">菜单</string>
+    <string name="control_editor_menu_editor">编辑器菜单</string>
+    <string name="control_editor_mouse">鼠标</string>
+    <string name="control_editor_mouse_range_hint">控制鼠标可移动的屏幕区域（从中心向各方向扩展的比例）</string>
+    <string name="control_editor_mousewheel_label">滚轮</string>
+    <string name="control_editor_mousewheel_settings">滚轮设置</string>
+    <string name="control_editor_multiplayer">联机</string>
+    <string name="control_editor_multiplayer_auto_create_hint">自动创建房间并生成邀请码</string>
+    <string name="control_editor_multiplayer_click_host_left">点击左侧「我想当房主」</string>
+    <string name="control_editor_multiplayer_connected">已连接</string>
+    <string name="control_editor_multiplayer_connected_finding_host">已连接 (寻找房主)</string>
+    <string name="control_editor_multiplayer_connected_waiting_join">已连接 (等待加入)</string>
+    <string name="control_editor_multiplayer_connecting_public_server">正在连接公共服务器...</string>
+    <string name="control_editor_multiplayer_connecting_room">正在连接房间...</string>
+    <string name="control_editor_multiplayer_copied">已复制</string>
+    <string name="control_editor_multiplayer_copied_to_clipboard">已复制到剪贴板</string>
+    <string name="control_editor_multiplayer_copy_invite_code">复制邀请码</string>
+    <string name="control_editor_multiplayer_create_and_generate_code">创建房间并生成邀请码</string>
+    <string name="control_editor_multiplayer_creating_room">正在创建房间...</string>
+    <string name="control_editor_multiplayer_creating_short">正在创建...</string>
+    <string name="control_editor_multiplayer_diagnostics">联机诊断</string>
+    <string name="control_editor_multiplayer_disconnect">断开连接</string>
+    <string name="control_editor_multiplayer_enter_invite_code">输入房主提供的邀请码</string>
+    <string name="control_editor_multiplayer_game_connect_address">游戏连接地址</string>
+    <string name="control_editor_multiplayer_game_ports">游戏端口：泰拉瑞亚 7777 / 星露谷 24642</string>
+    <string name="control_editor_multiplayer_game_server_address">游戏服务器地址</string>
+    <string name="control_editor_multiplayer_invalid_invite_code">无效的邀请码</string>
+    <string name="control_editor_multiplayer_invite_code">邀请码</string>
+    <string name="control_editor_multiplayer_i_want_guest">我想当房客</string>
+    <string name="control_editor_multiplayer_i_want_host">我想当房主</string>
+    <string name="control_editor_multiplayer_menu">联机菜单</string>
+    <string name="control_editor_multiplayer_room_created">房间已创建</string>
+    <string name="control_editor_multiplayer_searching_host">正在寻找房主...</string>
+    <string name="control_editor_multiplayer_select_mode">请选择联机方式</string>
+    <string name="control_editor_multiplayer_share_invite_code">分享邀请码给好友</string>
+    <string name="control_editor_multiplayer_share_invite_code_hint">分享邀请码给好友加入房间</string>
+    <string name="control_editor_multiplayer_unavailable">联机功能不可用</string>
+    <string name="control_editor_multiplayer_waiting_players">等待玩家加入...</string>
+    <string name="control_editor_not_selected">未选择</string>
+    <string name="control_editor_paste">粘贴</string>
+    <string name="control_editor_polygon">多边形</string>
+    <string name="control_editor_polygon_auto_connect_last_vertex">自动连接上一个顶点</string>
+    <string name="control_editor_polygon_continue_drawing">继续绘制 (至少需要3个顶点)</string>
+    <string name="control_editor_polygon_draw">绘制</string>
+    <string name="control_editor_polygon_draw_shape">绘制形状</string>
+    <string name="control_editor_polygon_instruction_lines">• 画一笔添加顶点\n• 拖动顶点调整位置</string>
+    <string name="control_editor_polygon_redraw">重新绘制</string>
+    <string name="control_editor_polygon_shape">多边形形状</string>
+    <string name="control_editor_polygon_stroke_add_vertex">每一笔添加一个顶点</string>
+    <string name="control_editor_polygon_tap_to_draw">点击绘制形状</string>
+    <string name="control_editor_polygon_tap_to_edit">点击编辑形状</string>
+    <string name="control_editor_preview_expanded">预览展开状态</string>
+    <string name="control_editor_preview_expanded_hint">在编辑器中查看展开后的扇区布局</string>
+    <string name="control_editor_quick_menu">快捷菜单</string>
+    <string name="control_editor_radial_menu_colors">轮盘颜色</string>
+    <string name="control_editor_radial_menu_label">轮盘菜单</string>
+    <string name="control_editor_radial_menu_settings">轮盘设置</string>
+    <string name="control_editor_replace_default_texture_hint">替换默认控件外观</string>
+    <string name="control_editor_right_stick_mode">右摇杆模式</string>
+    <string name="control_editor_right_stick_mode_hint">手柄模式下用于右摇杆</string>
+    <string name="control_editor_save_layout">保存布局</string>
+    <string name="control_editor_sector_key_binding">扇区按键绑定 (点击选中)</string>
+    <string name="control_editor_selected">已选中</string>
+    <string name="control_editor_selected_highlight">选中高亮</string>
+    <string name="control_editor_select_image">选择图片</string>
+    <string name="control_editor_set">设置</string>
+    <string name="control_editor_settings">编辑器设置</string>
+    <string name="control_editor_show_controls">显示控件</string>
+    <string name="control_editor_show_dividers">显示分隔线</string>
+    <string name="control_editor_snap_sensitivity_hint">控件自动对齐灵敏度</string>
+    <string name="control_editor_snap_threshold">吸附阈值</string>
+    <string name="control_editor_start_diagnosis">开始诊断</string>
+    <string name="control_editor_text_color">文本颜色</string>
+    <string name="control_editor_text_label">文本</string>
+    <string name="control_editor_text_settings">文本设置</string>
+    <string name="control_editor_texture">纹理</string>
+    <string name="control_editor_texture_background_pressed">按下背景</string>
+    <string name="control_editor_texture_knob_pressed">按下摇杆球</string>
+    <string name="control_editor_texture_set">已设置纹理</string>
+    <string name="control_editor_touch_controls">触摸控制</string>
+    <string name="control_editor_touch_label">触控</string>
+    <string name="control_editor_touchpad_settings">触控板设置</string>
+    <string name="control_editor_undo">撤销</string>
+    <string name="control_editor_unsaved_changes_exit_confirm">您有未保存的更改，是否保存后退出？</string>
+    <string name="control_editor_vertical">垂直</string>
+    <string name="control_editor_visibility_hint">隐藏后不显示但仍可响应</string>
+    <string name="control_editor_wheel_direction">滚轮方向</string>
+    <string name="copy">复制</string>
+    <string name="control_editor_activity_label">控制布局编辑器</string>
+    <string name="asset_check_in_progress">正在检查...</string>
+    <string name="asset_check_passed">检查通过</string>
+    <string name="asset_check_issues_found">发现问题</string>
+    <string name="asset_check_checking_message">正在检查资产完整性...</string>
+    <string name="asset_check_auto_fix_tip">点击「自动修复」可尝试修复上述问题。</string>
+    <string name="asset_check_auto_fix">自动修复</string>
+    <string name="multiplayer_disclaimer_title">联机功能声明</string>
+    <string name="multiplayer_disclaimer_intro">联机功能使用 EasyTier (LGPL-3.0) 第三方开源组件，在使用过程中所遇到的问题请通过相关渠道进行反馈。</string>
+    <string name="multiplayer_disclaimer_p2p">联机功能使用 P2P 技术，联机成功后房间内用户之间将直接连接。不会使用第三方服务器对您的流量进行转发。最终联机体验和参与联机者的网络情况有较大关系。</string>
+    <string name="multiplayer_disclaimer_legal">在多人联机全过程中，您必须严格遵守您所在国家与地区的全部法律法规。</string>
+    <string name="import_new_game_title">导入新游戏</string>
+    <string name="import_detected_modloader_label">检测到模组加载器</string>
+    <string name="import_detected_game_label">检测到游戏</string>
+    <string name="import_guide_step1_title">第一步：购买游戏</string>
+    <string name="import_guide_step1_item1">前往 GOG.com 注册并登录账号</string>
+    <string name="import_guide_step1_item2">搜索并购买游戏（如 Terraria、Stardew Valley）</string>
+    <string name="import_guide_step1_item3">如已拥有游戏，跳过此步骤</string>
+    <string name="import_guide_step2_title">第二步：下载游戏安装包</string>
+    <string name="import_guide_step2_item1">在 GOG.com 点击头像进入「我的游戏」</string>
+    <string name="import_guide_step2_item2">找到游戏，点击进入下载页面</string>
+    <string name="import_guide_step2_item3">System 选择「Linux」版本</string>
+    <string name="import_guide_step2_item4">下载 .sh 安装包（如 terraria_v1_4_5_4_88511.sh）</string>
+    <string name="import_guide_step3_title">第三步：下载模组加载器（可选）</string>
+    <string name="import_guide_step3_item1">tModLoader（Terraria 模组）：</string>
+    <string name="import_guide_step3_item2">  前往 github.com/tModLoader/tModLoader/releases</string>
+    <string name="import_guide_step3_item3">  下载最新 stable 版本的 tModLoader.zip</string>
+    <string name="import_guide_step3_item4">SMAPI（Stardew Valley 模组）：</string>
+    <string name="import_guide_step3_item5">  前往 smapi.io 点击 Download</string>
+    <string name="import_guide_step3_item6">  下载 SMAPI Linux 版本安装包</string>
+    <string name="import_guide_step4_title">第四步：导入到启动器</string>
+    <string name="import_guide_step4_item1">点击右侧「游戏文件」→ 选择下载的 .sh 或 .zip 文件</string>
+    <string name="import_guide_step4_item2">如需模组加载器，点击「模组加载器」→ 选择对应文件</string>
+    <string name="import_guide_step4_item3">确认上方识别结果无误</string>
+    <string name="import_guide_step4_item4">点击「开始导入」等待安装完成</string>
+    <string name="import_guide_step4_item5">返回游戏列表即可启动游戏</string>
+    <string name="import_game_file_subtitle_hint">选择 .sh 或 .zip 安装包</string>
+    <string name="import_modloader_subtitle_hint">tModLoader / SMAPI 等（可选）</string>
+    <string name="import_optional_badge">可选</string>
+    <string name="import_modloader_download_online">在线下载 ModLoader</string>
+    <string name="import_game_download_online">在线下载游戏本体</string>
+    <string name="gamefiles_download_title">选择游戏本体版本</string>
+    <string name="main_update_modloader">更新 ModLoader</string>
+    <string name="modloader_update_success">tModLoader 已更新到 %1$s</string>
+    <string name="modloader_update_failed">tModLoader 更新失败</string>
+    <string name="modloader_update_only_tmodloader">仅 tModLoader 游戏支持就地更新</string>
+    <string name="modloader_download_title">下载 %s</string>
+    <string name="modloader_download_loading">正在获取版本列表…</string>
+    <string name="modloader_download_refresh">刷新版本列表</string>
+    <string name="modloader_download_select_hint">选择要下载的版本</string>
+    <string name="modloader_download_use_mirror">使用加速站 (gh-proxy.com)</string>
+    <string name="modloader_download_prerelease_badge">预发布</string>
+    <string name="modloader_download_button">下载</string>
+    <string name="modloader_download_cancel">取消下载</string>
+    <string name="modloader_download_downloading">正在下载 %s</string>
+    <string name="modloader_download_fetch_failed">获取版本列表失败，请点击刷新重试</string>
+    <string name="modloader_download_fetch_failed_reason">获取版本列表失败: %s</string>
+    <string name="modloader_download_failed">下载失败</string>
+    <string name="modloader_download_complete">%s 下载完成</string>
+    <string name="import_in_progress_percent">导入中... %1$d%%</string>
+    <string name="import_preparing_import">正在准备导入...</string>
+    <string name="import_reference_screenshot">参考截图</string>
+    <string name="settings_controls_touch_section">触控</string>
+    <string name="settings_controls_multitouch_title">多点触控</string>
+    <string name="settings_controls_multitouch_subtitle">允许同时多个触控点</string>
+    <string name="settings_controls_mouse_right_stick_title">鼠标右摇杆</string>
+    <string name="settings_controls_mouse_right_stick_subtitle">鼠标移动映射到右摇杆</string>
+    <string name="settings_controls_controller_section">控制器</string>
+    <string name="settings_controls_vibration_section">震动</string>
+    <string name="settings_controls_vibration_strength_title">震动强度</string>
+    <string name="settings_game_performance_section">性能</string>
+    <string name="settings_game_low_latency_audio_subtitle">降低音频延迟，可能增加功耗</string>
+    <string name="settings_game_runtime_section">运行时</string>
+    <string name="settings_game_runtime_subtitle">设置游戏默认使用的 .NET 运行时版本</string>
+    <string name="settings_game_renderer_section">渲染</string>
+    <string name="download_enter">进入</string>
+    <string name="gog_no_linux_version">该游戏没有 Linux 版本</string>
+    <string name="gog_no_installers">该游戏没有可用的安装包</string>
+    <string name="install_win_inno_not_supported">此 Windows 安装包（Inno Setup）无法在设备上直接解包——内置的 7-Zip（16.02）不支持 Inno 格式。请在电脑上用 innoextract 或 7-Zip 解包后，把含 Terraria.exe 的文件夹打包为 .zip 再导入。</string>
+    <string name="install_win_assembly_not_found">解包后未找到 Terraria.exe。请在电脑上解包后，把含 Terraria.exe 的文件夹打包为 .zip 再导入。</string>
+    <string name="gog_select_game_version_prompt">请选择游戏版本</string>
+    <string name="gog_download_complete">下载完成</string>
+    <string name="gog_download_cancelled">下载已取消</string>
+    <string name="common_unknown_error">未知错误</string>
+    <string name="gog_select_game_version">选择游戏版本</string>
+    <string name="gog_start_download">开始下载</string>
+    <string name="gog_select_modloader_version">选择 %1$s 版本</string>
+    <string name="gog_select_version">选择版本</string>
+    <string name="gog_game_downloaded">游戏已下载</string>
+    <string name="gog_modloader_downloaded">ModLoader 已下载</string>
+    <string name="gog_install_now">立即安装</string>
+    <string name="gog_install_later">稍后安装</string>
+    <string name="gog_download_failed_title">下载失败</string>
+    <string name="main_deleting_game_files">正在删除游戏文件...</string>
+    <string name="main_delete_game_confirm_message">确定要删除“%1$s”吗？</string>
+    <string name="main_delete_game_irreversible">此操作将删除游戏文件，不可撤销</string>
+    <string name="main_game_not_found">未找到游戏: %1$s</string>
+    <string name="main_control_editor_placeholder">布局编辑器</string>
+    <string name="main_download">下载</string>
+    <string name="main_announcements">公告</string>
+    <string name="main_import_game">导入游戏</string>
+    <string name="main_control_store">控制包商店</string>
+    <string name="main_file_browser">文件浏览</string>
+    <string name="main_update_download_service_unavailable">系统下载服务不可用</string>
+    <string name="main_update_download_dir_unavailable">无法访问下载目录</string>
+    <string name="main_update_download_detected_existing_apk">检测到已下载完成的更新包</string>
+    <string name="main_update_notification_title">启动器更新</string>
+    <string name="main_update_notification_downloading_version">正在下载版本 %1$s</string>
+    <string name="main_update_download_started">已开始在启动器内下载更新</string>
+    <string name="main_update_download_start_failed">下载启动失败: %1$s</string>
+    <string name="main_update_download_completed_apk_unreadable">下载完成但无法读取安装包</string>
+    <string name="main_update_download_failed_with_code">下载失败，错误码: %1$d</string>
+    <string name="main_update_require_unknown_source_permission">请先允许安装未知来源应用</string>
+    <string name="main_update_install_launch_failed">无法启动安装: %1$s</string>
+    <string name="main_update_latest_version_label">最新版本</string>
+    <string name="main_update_dialog_title">发现新版本</string>
+    <string name="main_update_current_version">当前版本: %1$s</string>
+    <string name="main_update_latest_version">最新版本: %1$s</string>
+    <string name="main_update_action_open_release">前往更新</string>
+    <string name="main_update_action_download">下载更新</string>
+    <string name="main_update_action_download_github">GitHub 下载</string>
+    <string name="main_update_action_download_cloud">网盘下载</string>
+    <string name="main_update_action_ignore_version">忽略此版本</string>
+    <string name="main_update_status_starting">正在准备下载</string>
+    <string name="main_update_status_downloading">正在下载更新</string>
+    <string name="main_update_status_completed">下载完成</string>
+    <string name="main_update_status_failed">下载失败</string>
+    <string name="main_update_target_version">目标版本: %1$s</string>
+    <string name="main_update_connecting_service">正在连接下载服务，请稍候…</string>
+    <string name="main_update_ready_to_install">已就绪，可安装</string>
+    <string name="main_update_download_unknown_error">下载过程中出现未知错误</string>
+    <string name="main_update_action_retry_download">重试下载</string>
+    <string name="main_update_progress_with_total">%1$d%% · %2$s / %3$s</string>
+    <string name="main_update_progress_without_total">%1$d%% · %2$s</string>
+    <string name="main_update_size_zero_bytes">0 B</string>
+    <string name="main_update_size_gb">%1$.2f GB</string>
+    <string name="main_update_size_mb">%1$.1f MB</string>
+    <string name="main_update_size_kb">%1$.1f KB</string>
+    <string name="main_update_size_bytes">%1$d B</string>
+    <string name="announcement_load_content_failed">加载内容失败</string>
+    <string name="announcement_load_failed">加载公告失败</string>
+    <string name="announcement_empty">暂无公告</string>
+    <string name="announcement_no_content">暂无内容</string>
+    <string name="main_announcement_dialog_title">发现新公告</string>
+    <string name="main_announcement_dialog_action_learn_more">了解</string>
+    <string name="main_announcement_dialog_action_view">查看公告</string>
+    <string name="init_runtime_components_title">运行环境组件</string>
+    <string name="init_runtime_components_subtitle">安装游戏所需的运行时组件</string>
+    <string name="init_runtime_components_hint">首次运行需要解压运行环境，仅需几分钟</string>
+    <string name="init_start_install">开始安装</string>
+    <string name="settings_appearance_theme_section">主题</string>
+    <string name="settings_appearance_theme_mode_title">主题模式</string>
+    <string name="settings_appearance_theme_mode_subtitle">选择应用主题</string>
+    <string name="settings_appearance_theme_mode_system">跟随系统</string>
+    <string name="settings_appearance_theme_mode_dark">深色</string>
+    <string name="settings_appearance_theme_mode_light">浅色</string>
+    <string name="settings_appearance_theme_color_title">主题颜色</string>
+    <string name="settings_appearance_theme_color_subtitle">自定义应用主色调</string>
+    <string name="settings_appearance_background_section">背景</string>
+    <string name="settings_appearance_background_image_title">背景图片</string>
+    <string name="settings_appearance_background_video_title">背景视频</string>
+    <string name="settings_appearance_background_set">已设置</string>
+    <string name="settings_appearance_background_select_image">点击选择图片</string>
+    <string name="settings_appearance_background_select_video">点击选择视频</string>
+    <string name="settings_appearance_background_opacity_title">背景透明度</string>
+    <string name="settings_appearance_background_opacity_subtitle">调整UI元素透明度</string>
+    <string name="settings_appearance_video_speed_title">视频播放速度</string>
+    <string name="settings_appearance_video_speed_subtitle">调整背景视频播放速度</string>
+    <string name="settings_appearance_restore_background_title">恢复默认背景</string>
+    <string name="settings_appearance_restore_background_subtitle">清除自定义背景设置</string>
+    <string name="settings_appearance_language_section">语言</string>
+    <string name="settings_appearance_language_title">应用语言</string>
+    <string name="settings_appearance_language_subtitle">更改后需重启生效</string>
+
+    <string name="settings_developer_logging_section">日志</string>
+    <string name="settings_developer_logging_enable_title">启用日志系统</string>
+    <string name="settings_developer_logging_enable_subtitle">记录应用运行日志</string>
+    <string name="settings_developer_verbose_logging_title">详细日志</string>
+    <string name="settings_developer_verbose_logging_subtitle">输出更多调试信息</string>
+    <string name="settings_developer_view_logs_title">查看日志</string>
+    <string name="settings_developer_view_logs_subtitle">查看最近的运行日志</string>
+    <string name="settings_developer_export_logs_title">导出日志</string>
+    <string name="settings_developer_export_logs_subtitle">将日志文件导出到本地文件</string>
+    <string name="settings_developer_share_logs_title">分享日志</string>
+    <string name="settings_developer_share_logs_subtitle">分享日志文件以便调试</string>
+    <string name="settings_developer_performance_section">性能</string>
+    <string name="settings_developer_kill_launcher_ui_title">启动后关闭启动器UI</string>
+    <string name="settings_developer_kill_launcher_ui_subtitle">释放更多内存给游戏</string>
+    <string name="settings_developer_dotnet_section">.NET 运行时</string>
+    <string name="settings_developer_server_gc_title">Server GC</string>
+    <string name="settings_developer_server_gc_subtitle">使用服务器模式垃圾回收</string>
+    <string name="settings_developer_concurrent_gc_title">Concurrent GC</string>
+    <string name="settings_developer_concurrent_gc_subtitle">启用并发垃圾回收</string>
+    <string name="settings_developer_tiered_compilation_title">Tiered Compilation</string>
+    <string name="settings_developer_tiered_compilation_subtitle">启用分层编译优化</string>
+    <string name="settings_developer_fna_section">FNA 优化</string>
+    <string name="settings_developer_map_buffer_range_title">MapBufferRange 优化</string>
+    <string name="settings_developer_map_buffer_range_subtitle">启用 OpenGL 缓冲区优化</string>
+    <string name="settings_developer_gl_perf_diag_title">GL 性能诊断</string>
+    <string name="settings_developer_gl_perf_diag_subtitle">在 FPS 文本附近显示 Draw/上传瓶颈提示</string>
+    <string name="settings_developer_coreclr_compat_title">CoreCLR 小米兼容模式</string>
+    <string name="settings_developer_coreclr_compat_subtitle">当受影响的小米设备上 CoreCLR 初始化失败时，启用面向小米的兼容 hooks 和更稳妥的启动设置</string>
+    <string name="settings_developer_maintenance_section">维护</string>
+    <string name="settings_developer_clear_cache_title">清除缓存</string>
+    <string name="settings_developer_clear_cache_subtitle">清理应用缓存文件</string>
+
+    <string name="settings_about_app_info_section">应用信息</string>
+    <string name="settings_about_check_update_title">检查更新</string>
+    <string name="settings_about_check_update_subtitle">检查是否有新版本可用</string>
+    <string name="settings_about_community_section">社区</string>
+    <string name="settings_about_community_subtitle">加入社区获取帮助</string>
+    <string name="settings_about_support_section">支持我们</string>
+    <string name="settings_about_sponsor_wall_title">赞助商墙</string>
+    <string name="settings_about_sponsor_wall_subtitle">感谢所有支持者</string>
+    <string name="settings_about_become_sponsor_subtitle">成为赞助者</string>
+    <string name="settings_about_contributors_section">贡献者</string>
+    <string name="settings_about_open_source_section">开源</string>
+    <string name="settings_about_open_source_subtitle">查看使用的开源库</string>
+    <string name="about_core_developer">核心开发者</string>
+
+    <!-- Restored from deleted Chinese literals -->
+    <string name="console_hint_tag">💡 提示</string>
+    <string name="console_hint_server_ready"> 服务器已启动！游戏内连接方式: 多人模式 → 通过IP加入 → 127.0.0.1:%1$s</string>
+    <string name="asset_check_issue_directory_missing">%1$s 目录缺失</string>
+    <string name="asset_check_component_runtime_libs">运行时库</string>
+    <string name="asset_check_issue_runtime_version_missing">运行时库版本文件缺失</string>
+    <string name="asset_check_summary_all_passed">所有资产检查通过</string>
+    <string name="asset_check_summary_issues_found">发现 %1$d 个问题</string>
+    <string name="asset_check_summary_critical_count">（%1$d 个严重）</string>
+    <string name="asset_check_summary_warning_count">（%1$d 个警告）</string>
+    <string name="asset_check_issue_missing_file">%1$s 缺少文件: %2$s</string>
+    <string name="asset_check_issue_empty_file">%1$s 文件为空: %2$s</string>
+    <string name="asset_check_issue_corrupted_file">%1$s 文件可能损坏: %2$s (%3$d bytes &lt; %4$d bytes)</string>
+    <string name="asset_check_issue_permission_error">%1$s 文件无法读取: %2$s</string>
+    <string name="asset_fix_no_auto_fixable_issues">没有可自动修复的问题</string>
+    <string name="asset_fix_progress_prepare">准备修复...</string>
+    <string name="asset_fix_progress_reextract_runtime">重新解压运行时库...</string>
+    <string name="asset_fix_runtime_reextract_failed">运行时库重新解压失败</string>
+    <string name="asset_fix_runtime_extract_exception">运行时库解压异常: %1$s</string>
+    <string name="asset_fix_progress_mark_reinit">标记需要重新初始化...</string>
+    <string name="asset_fix_mark_reinit_failed">无法标记重新初始化: %1$s</string>
+    <string name="asset_fix_progress_completed">修复完成</string>
+    <string name="asset_fix_result_prefix">修复完成: </string>
+    <string name="asset_fix_result_success_count">成功 %1$d 项</string>
+    <string name="asset_fix_result_failed_count">，失败 %1$d 项</string>
+    <string name="asset_fix_restart_required">\n\n请重启应用以完成组件重新安装。</string>
+    <string name="asset_check_status_dotnet_installed">✓ .NET Runtime 已安装</string>
+    <string name="asset_check_status_dotnet_not_installed">✗ .NET Runtime 未安装</string>
+    <string name="asset_check_status_runtime_libs_installed">✓ 运行时库 (%1$d 个库)</string>
+    <string name="asset_check_status_runtime_libs_not_extracted">✗ 运行时库未解压</string>
+    <string name="process_launcher_status_starting">%1$s 正在启动...</string>
+    <string name="process_launcher_status_running">%1$s 正在运行</string>
+    <string name="process_launcher_channel_name">进程启动器</string>
+    <string name="process_launcher_channel_description">后台进程运行通知</string>
+    <string name="process_launcher_notification_title">后台进程</string>
+    <string name="extract_failed">解压失败</string>
+    <string name="install_plugin_not_found">未找到支持此游戏的安装插件</string>
+    <string name="extract_7zip_library_load_failed">7-Zip 原生库加载失败</string>
+    <string name="extract_complete">解压完成</string>
+    <string name="extract_7zip_failed">基础7z解压器解压失败</string>
+    <string name="extract_in_progress">正在解压: %1$s</string>
+    <string name="extract_gog_script">正在提取安装脚本...</string>
+    <string name="extract_gog_mojosetup">正在提取MojoSetup归档...</string>
+    <string name="extract_gog_game_data">正在提取游戏数据...</string>
+    <string name="extract_gog_parse_game_data">正在解析游戏数据...</string>
+    <string name="extract_gog_decompress_game_data">正在解压游戏数据...</string>
+    <string name="extract_gog_game_data_complete">游戏数据提取完成</string>
+    <string name="extract_gog_sh_failed">GoG Sh 文件解压失败</string>
+    <string name="install_starting">开始安装...</string>
+    <string name="install_everest">安装 Everest...</string>
+    <string name="install_extract_icon">提取图标...</string>
+    <string name="install_finishing">完成安装...</string>
+    <string name="install_complete">安装完成!</string>
+    <string name="install_failed">安装失败</string>
+    <string name="install_everest_with_detail">安装 Everest: %1$s</string>
+    <string name="install_monomod">安装 MonoMod 库...</string>
+    <string name="install_everest_miniinstaller">执行 Everest MiniInstaller...</string>
+    <string name="install_everest_miniinstaller_patch_missing">未找到 Everest MiniInstaller 修补程序，或者存在多个同 ID 修补程序</string>
+    <string name="install_everest_miniinstaller_failed">Everest MiniInstaller 执行失败，错误码：%1$d</string>
+    <string name="install_extract_game_failed">游戏解压失败</string>
+    <string name="install_smapi">安装 SMAPI...</string>
+    <string name="install_smapi_with_detail">安装 SMAPI: %1$s</string>
+    <string name="install_apply_monomod_patch">应用 MonoMod 补丁...</string>
+    <string name="install_patch_arm64">修补 ARM64 架构...</string>
+    <string name="install_patch_config">修补配置文件...</string>
+    <string name="install_extract_smapi_with_detail">解压 SMAPI: %1$s</string>
+    <string name="install_process_smapi_files">处理 SMAPI 文件...</string>
+    <string name="install_extract_smapi_core_files">解压 SMAPI 核心文件...</string>
+    <string name="install_extract_install_dat_failed">解压 install.dat 失败: %1$s</string>
+    <string name="install_copy_smapi_files">复制 SMAPI 文件...</string>
+    <string name="install_configure_smapi">配置 SMAPI...</string>
+    <string name="install_tmodloader_prepare_dir">准备 tModLoader 目录...</string>
+    <string name="install_tmodloader">安装 tModLoader...</string>
+    <string name="install_tmodloader_with_detail">安装 tModLoader: %1$s</string>
+    <string name="install_tmodloader_copy_files">复制 tModLoader 文件...</string>
+    <string name="easytier_diag_checking">JNI 库加载检查</string>
+    <string name="easytier_diag_jni_loaded">JNI 库已加载</string>
+    <string name="easytier_diag_jni_load_failed">未知错误</string>
+    <string name="easytier_diag_skipped_jni_unavailable">跳过：JNI 库不可用</string>
+    <string name="easytier_diag_skipped">跳过</string>
+    <string name="easytier_diag_generating_configs">配置生成</string>
+    <string name="easytier_diag_detail_config_preview">Host 配置 (%1$d 字符):\n%2$s...\n\nGuest 配置 (%3$d 字符):\n%4$s...</string>
+    <string name="easytier_diag_config_generated">配置生成</string>
+    <string name="easytier_diag_parsing_host_config">配置解析测试</string>
+    <string name="easytier_diag_config_parse_success">配置解析测试</string>
+    <string name="easytier_diag_skipped_config_parse_failed">跳过：配置解析失败</string>
+    <string name="easytier_diag_starting_guest_instance">网络实例启动</string>
+    <string name="easytier_diag_instance_start_success">网络实例启动</string>
+    <string name="easytier_diag_instance_start_failed">网络实例启动</string>
+    <string name="easytier_diag_skipped_instance_not_started">跳过：实例未启动</string>
+    <string name="easytier_diag_waiting_network_init">网络信息收集</string>
+    <string name="easytier_diag_network_collect_empty">网络信息收集</string>
+    <string name="easytier_diag_port_checking">端口监听检测 (7777)</string>
+    <string name="easytier_diag_port_listening">端口监听检测 (7777)</string>
+    <string name="easytier_diag_port_listening_detail">端口 7777 已在监听</string>
+    <string name="easytier_diag_port_not_listening">端口监听检测 (7777)</string>
+    <string name="easytier_diag_port_not_listening_detail">端口 7777 未在监听</string>
+    <string name="easytier_diag_stopping_test_instance">清理测试实例</string>
+    <string name="easytier_diag_cleanup_done">清理测试实例</string>
+    <string name="easytier_jni_not_loaded">EasyTier JNI 库未加载</string>
+    <string name="easytier_jni_not_loaded_with_reason">EasyTier JNI 库未加载: %1$s</string>
+    <string name="easytier_error_config_parse_failed">配置解析失败</string>
+    <string name="easytier_error_instance_start_failed">网络实例启动失败</string>
+    <string name="easytier_vpn_status_initializing">正在初始化 VPN...</string>
+    <string name="easytier_vpn_error_create_interface">无法创建 VPN 接口</string>
+    <string name="easytier_vpn_status_ready">VPN 已就绪</string>
+    <string name="easytier_vpn_status_connecting">正在连接...</string>
+    <string name="easytier_vpn_status_connect_failed">连接失败: %1$s</string>
+    <string name="easytier_vpn_status_tun_set_failed">TUN 设置失败: %1$s</string>
+    <string name="easytier_vpn_status_connected">已连接 - %1$s</string>
+    <string name="easytier_vpn_status_error">错误: %1$s</string>
+    <string name="easytier_vpn_channel_name">EasyTier 联机</string>
+    <string name="easytier_vpn_channel_description">EasyTier VPN 连接状态</string>
+    <string name="easytier_vpn_notification_title">EasyTier 联机</string>
+    <string name="runtime_extract_prepare">准备解压运行时库...</string>
+    <string name="runtime_extract_entry">解压: %1$s</string>
+    <string name="runtime_extract_incomplete_missing">解压不完整，缺少: %1$s</string>
+    <string name="runtime_extract_failed_with_reason">解压失败: %1$s</string>
+    <string name="key_gamepad_back">鼠标左键</string>
+    <string name="key_gamepad_start">鼠标右键</string>
+    <string name="key_gamepad_guide">空格</string>
+    <string name="control_editor_polygon_edit_with_vertex_count">编辑多边形 (%1$d个顶点)</string>
+    <string name="control_editor_radial_sector_count">扇区数量: %1$d</string>
+    <string name="control_editor_expand_animation_ms">展开动画: %1$dms</string>
+    <string name="control_editor_current_layout">当前: %1$s</string>
+    <string name="control_editor_multiplayer_connected_players">联机中 (%1$d人)</string>
+    <string name="control_editor_multiplayer_online_count">在线人数: %1$d</string>
+    <string name="control_editor_multiplayer_host_game_address_hint">房主开服后，其他玩家在游戏中连接 %1$s:端口</string>
+    <string name="control_editor_multiplayer_guest_game_address_hint">在游戏「多人游戏」→「通过IP加入」输入 %1$s:端口</string>
+    <string name="control_editor_polygon_vertex_count">%1$d 个顶点</string>
+    <string name="control_editor_grid_density">网格密度: %1$d×%1$d</string>
+    <string name="control_editor_sector_label_number">扇区 %1$d</string>
+    <string name="crash_details_log_title">详细日志</string>
+    <string name="crash_collapse">收起</string>
+    <string name="crash_expand">展开</string>
+    <string name="crash_error_info_title">错误信息</string>
+    <string name="crash_stacktrace_title">堆栈跟踪 / Logcat</string>
+    <string name="crash_no_stacktrace">无可用的堆栈跟踪信息</string>
+    <string name="crash_app_stopped">应用已停止运行</string>
+    <string name="crash_game_exited_abnormally">游戏异常退出</string>
+    <string name="crash_exit_code">退出代码</string>
+    <string name="crash_environment_info">环境信息</string>
+    <string name="crash_time_occurred">发生时间</string>
+    <string name="crash_unknown">未知</string>
+    <string name="crash_app_version">应用版本</string>
+    <string name="crash_device_model">设备型号</string>
+    <string name="crash_android_version">Android 版本</string>
+    <string name="crash_share_log">分享日志</string>
+    <string name="crash_restart_app">重启应用</string>
+    <string name="crash_return_app">返回应用</string>
+    <string name="crash_close_app">关闭应用</string>
+    <string name="crash_report_file_title">RaLaunch 崩溃报告</string>
+    <string name="crash_report_basic_info_section">基本信息</string>
+    <string name="crash_report_detailed_logs_section">详细日志</string>
+    <string name="crash_report_unavailable">无法获取错误日志</string>
+    <string name="crash_share_subject">RaLaunch 崩溃日志</string>
+    <string name="crash_share_text_format">RaLaunch 崩溃日志 - %1$s</string>
+    <string name="crash_share_chooser">分享崩溃日志</string>
+    <string name="crash_share_failed">分享日志失败: %1$s</string>
+    <string name="crash_error_type_label">错误类型</string>
+    <string name="crash_stacktrace_native_section">=== C层错误信息 ===</string>
+    <string name="crash_stacktrace_logcat_section">=== Logcat 日志（最近错误） ===</string>
+    <string name="crash_stacktrace_error_details_section">=== 错误详情 ===</string>
+    <string name="crash_logcat_truncated_prefix">...[日志已截断]...</string>
+    <string name="gog_download_game_modloader_hint">点击下载游戏和 ModLoader</string>
+    <string name="import_storage_init_failed">无法初始化游戏存储</string>
+    <string name="control_layout_preview_image">布局预览</string>
+    <string name="control_layout_custom_author">自定义布局</string>
+    <string name="control_layout_edit">编辑</string>
+    <string name="control_layout_delete_irreversible_confirm">确定要删除 "%1$s" 吗？此操作不可撤销。</string>
+    <string name="control_layout_empty_title">暂无控制布局</string>
+    <string name="control_layout_show_quick_actions">显示快捷操作</string>
+    <string name="control_layout_hide_quick_actions">收起快捷操作</string>
+    <string name="control_layout_quick_switch_tag">快切</string>
+    <string name="control_layout_more_actions">更多</string>
+    <string name="control_layout_quick_switch_title">游戏内快速切换</string>
+    <string name="control_layout_quick_switch_subtitle">启用后可在游戏悬浮菜单中快速切换到此布局</string>
+    <string name="control_layout_preview">预览</string>
+    <string name="control_layout_select_one">选择一个布局</string>
+    <string name="appearance_background_image_set">背景图片已设置</string>
+    <string name="settings_background_set_failed">设置背景失败: %1$s</string>
+    <string name="settings_cannot_open_url">无法打开链接</string>
+    <string name="settings_cannot_open_sponsors">无法打开赞助商页面</string>
+    <string name="settings_logs_read_failed">无法读取日志: %1$s</string>
+    <string name="settings_cache_cleared">缓存已清除</string>
+    <string name="settings_clear_cache_failed">清除缓存失败</string>
+    <string name="settings_logs_cleared">日志已清除</string>
+    <string name="settings_multiplayer_enabled">联机功能已启用</string>
+    <string name="settings_fix_restart_required">请重启应用以完成修复</string>
+    <string name="settings_fix_failed">修复失败: %1$s</string>
+    <string name="settings_reextract_runtime_title">重新解压运行时库</string>
+    <string name="settings_reextract_runtime_message">此操作将删除现有运行时库并重新解压。</string>
+    <string name="settings_reextract_runtime_hint">如果游戏启动失败或提示库文件缺失，可以尝试此操作。</string>
+    <string name="settings_reextract_runtime_in_progress">正在解压...</string>
+    <string name="settings_reextract_runtime_success">运行时库重新解压成功</string>
+    <string name="settings_reextract_runtime_failed">运行时库重新解压失败</string>
+    <string name="settings_extract_failed_with_reason">解压失败: %1$s</string>
+    <string name="settings_confirm_extract">确认解压</string>
+    <string name="shared_feature_not_implemented">待实现</string>
+    <string name="shared_game_launch_executable_path_empty">游戏可执行文件路径为空</string>
+    <string name="shared_game_launch_executable_path_not_set">游戏可执行文件路径未设置</string>
+    <string name="shared_game_launch_executable_not_found">游戏可执行文件不存在: %1$s</string>
+    <string name="shared_game_launch_preparing_environment">正在准备启动环境...</string>
+    <string name="shared_game_launch_failed">启动游戏失败</string>
+    <string name="shared_patch_not_found">补丁不存在</string>
+    <string name="shared_patch_not_supported_for_game">补丁不支持此游戏</string>
+    <string name="control_layout_created">新布局已创建</string>
+    <string name="settings_open_source_licenses">开源许可</string>
+    <string name="easytier_diag_config_generate_failed">配置生成失败: %1$s</string>
+    <string name="easytier_diag_network_collect_success">收集到 %1$d 个实例，%2$d 个运行中，%3$d 个节点</string>
+    <string name="easytier_diag_cleanup_failed">清理测试实例失败: %1$s</string>
+    <string name="easytier_diag_detail_last_error">getLastError() = %1$s</string>
+    <string name="easytier_diag_detail_parse_result">hostParseResult=%1$d, guestParseResult=%2$d</string>
+    <string name="easytier_diag_detail_error_suffix">, 错误=%1$s</string>
+    <string name="easytier_diag_detail_run_result">runResult=%1$d</string>
+    <string name="easytier_diag_detail_run_failure">runResult=%1$d, error=%2$s</string>
+    <string name="easytier_diag_detail_json_preview">JSON 长度: %1$d\n%2$s</string>
+    <string name="easytier_diag_detail_json_empty">JSON 长度: %1$d, 内容: %2$s</string>
+    <string name="crash_error_message_label">错误信息</string>
+    <string name="crash_exit_code_label">退出代码</string>
+    <string name="crash_native_error_label">C层错误</string>
+    <string name="main_splash_brand">Rotating Art Launcher</string>
+    <string name="settings_fps_30">30 FPS</string>
+    <string name="settings_fps_45">45 FPS</string>
+    <string name="settings_fps_60">60 FPS</string>
+    <string name="renderer_mobileglues">MobileGlues 1.3.4</string>
+    <string name="renderer_mobileglues_desc">OpenGL 4.6 翻译到 OpenGL ES 3.2（现代翻译层）</string>
+    <string name="renderer_zink">Zink (Mesa Vulkan)</string>
+    <string name="renderer_zink_desc">基于 Vulkan 的桌面 OpenGL（Mesa Zink + Turnip）</string>
+    <string name="patch_status_changed_message">%1$s - %2$s：%3$s</string>
+    <string name="gog_game_id">ID：%1$d</string>
+    <string name="appearance_image_background_set">图片背景已设置，不透明度已自动调整为 90%%</string>
+    <string name="appearance_video_background_set">视频背景已设置，不透明度已自动调整为 90%%</string>
+    <string name="game_launch_invalid_params_conflict">启动参数无效：启动模式冲突</string>
+    <string name="game_launch_no_params">未提供启动参数</string>
+    <string name="game_launch_repository_load_failed">加载游戏仓库失败</string>
+    <string name="key_escape">ESC</string>
+    <string name="key_tab">Tab</string>
+    <string name="key_caps_lock">Caps Lock</string>
+    <string name="key_backspace">Backspace</string>
+    <string name="key_delete">Delete</string>
+    <string name="key_insert">Insert</string>
+    <string name="key_home">Home</string>
+    <string name="key_end">End</string>
+    <string name="key_page_up">Page Up</string>
+    <string name="key_page_down">Page Down</string>
+    <string name="key_gamepad_dpad_up">方向键 ↑</string>
+    <string name="key_gamepad_dpad_down">方向键 ↓</string>
+    <string name="key_gamepad_dpad_left">方向键 ←</string>
+    <string name="key_gamepad_dpad_right">方向键 →</string>
+    <string name="pack_version_short">v%1$s</string>
+    <string name="pack_author_version_compact">%1$s • v%2$s</string>
+    <string name="about_build_label">构建</string>
+    <string name="documents_provider_root_summary">RaLaunch</string>
+    <string name="easytier_diag_exception">异常：%1$s</string>
+    <string name="easytier_diag_config_parse_failed">配置解析失败</string>
+    <string name="easytier_diag_detail_parse_failure">Host: 结果=%1$d%2$s\nGuest: 结果=%3$d%4$s</string>
+    <string name="control_editor_wasd_keys">WASD</string>
+    <string name="control_editor_multiplayer_invite_code_placeholder">U/XXXX-XXXX-XXXX</string>
+    <string name="control_editor_snap_threshold_value">10px</string>
+    <string name="asset_check_component_dotnet_runtime">.NET 运行时</string>
+    <string name="asset_check_status_dotnet_installed_versions">✓ .NET 运行时（%1$s）</string>
+    <string name="console_hint_world_select">输入 1、2、3、4 选择世界，输入 n 创建新世界，输入 d+数字 删除世界</string>
+    <string name="console_hint_port">输入服务器端口（默认 7777，按回车保留默认值）</string>
+    <string name="console_hint_max_players">输入最大玩家数（按回车保留默认值）</string>
+    <string name="console_hint_password">输入服务器密码（留空表示无密码，按回车跳过）</string>
+    <string name="console_hint_upnp">正在尝试 UPnP 端口映射，远程玩家可通过你的公网 IP 连接</string>
+    <string name="console_hint_mods_loading">正在加载模组，请稍候...</string>
+    <string name="console_hint_world_generating">正在生成新世界，这可能需要几分钟...</string>
+    <string name="console_hint_saving_world">正在保存世界...</string>
+    <string name="main_empty_game_list_hint">点击下方按钮添加你的第一个游戏</string>
+    <string name="main_edit_game_info">编辑游戏信息</string>
+    <string name="main_edit_display_info">更新显示信息</string>
+    <string name="main_renderer_optional">渲染器（可选）</string>
+    <string name="main_renderer_override">覆盖渲染器</string>
+    <string name="main_dotnet_runtime_optional">.NET 运行时（可选）</string>
+    <string name="main_dotnet_runtime_override">覆盖 .NET 运行时</string>
+    <string name="renderer_select">选择渲染器</string>
+    <string name="renderer_follow_global_settings">跟随全局设置</string>
+    <string name="renderer_follow_global">跟随全局</string>
+    <string name="runtime_follow_global_settings">跟随全局设置</string>
+    <string name="runtime_follow_global">跟随全局</string>
+    <string name="settings_logs_title">日志查看器</string>
+    <string name="settings_logs_empty">暂无日志</string>
+    <string name="color_picker_title">选择颜色</string>
+    <string name="color_picker_alpha">透明度</string>
+    <string name="color_picker_presets">预设</string>
+    <string name="install_plugin_display_name_celeste_everest">Celeste / Everest</string>
+    <string name="install_plugin_display_name_terraria_tmodloader">Terraria / tModLoader</string>
+    <string name="install_plugin_display_name_stardew_smapi">Stardew Valley / SMAPI</string>
+    <string name="shared_unknown">未知</string>
+</resources>

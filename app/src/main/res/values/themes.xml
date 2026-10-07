@@ -1,0 +1,106 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Material Design 3 浅色主题（默认） -->
+    <style name="Theme.raLaunch" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Material 3 主要颜色 (Primary) -->
+        <item name="colorPrimary">@color/md_theme_light_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_light_onPrimaryContainer</item>
+
+        <!-- Material 3 次要颜色 (Secondary) -->
+        <item name="colorSecondary">@color/md_theme_light_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_light_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_light_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_light_onSecondaryContainer</item>
+
+        <!-- Material 3 三级色 (Tertiary) -->
+        <item name="colorTertiary">@color/md_theme_light_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_light_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_light_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_light_onTertiaryContainer</item>
+
+        <!-- Material 3 错误颜色 (Error) -->
+        <item name="colorError">@color/md_theme_light_error</item>
+        <item name="colorOnError">@color/md_theme_light_onError</item>
+        <item name="colorErrorContainer">@color/md_theme_light_errorContainer</item>
+        <item name="colorOnErrorContainer">@color/md_theme_light_onErrorContainer</item>
+
+        <!-- Material 3 背景色 (Background) -->
+        <item name="android:colorBackground">@color/md_theme_light_background</item>
+        <item name="colorOnBackground">@color/md_theme_light_onBackground</item>
+        <item name="android:windowBackground">@drawable/bg_main</item>
+
+        <!-- Material 3 表面颜色 (Surface) - 使用动态取色的浅蓝色调 -->
+        <item name="colorSurface">@color/md_theme_light_surface</item>
+        <item name="colorOnSurface">@color/md_theme_light_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_light_onSurfaceVariant</item>
+        <item name="colorSurfaceContainer">@color/md_theme_light_surfaceContainer</item>
+        <item name="colorSurfaceContainerHigh">@color/md_theme_light_surfaceContainerHigh</item>
+        <item name="colorSurfaceContainerLow">@color/md_theme_light_surfaceContainerLow</item>
+        <item name="colorSurfaceContainerHighest">@color/md_theme_light_surfaceContainerHighest</item>
+
+        <!-- Material 3 轮廓颜色 (Outline) -->
+        <item name="colorOutline">@color/md_theme_light_outline</item>
+        <item name="colorOutlineVariant">@color/md_theme_light_outlineVariant</item>
+
+        <!-- 状态栏和导航栏 -->
+        <item name="android:statusBarColor">?attr/colorSurface</item>
+        <item name="android:navigationBarColor">?attr/colorSurface</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+
+        <!-- Material 文本颜色（向后兼容） -->
+        <item name="android:textColorPrimary">?attr/colorOnSurface</item>
+        <item name="android:textColorSecondary">?attr/colorOnSurfaceVariant</item>
+
+        <!-- Material 强调色 (向后兼容) -->
+        <item name="colorAccent">?attr/colorPrimary</item>
+
+        <!-- 自定义主题属性（映射到MD3标准属性） -->
+        <item name="backgroundPrimary">?android:attr/colorBackground</item>
+        <item name="backgroundSecondary">?attr/colorSurfaceVariant</item>
+        <item name="backgroundCard">?attr/colorSurface</item>
+        <item name="backgroundSidebar">?attr/colorSurfaceVariant</item>
+        <item name="textPrimary">?attr/colorOnSurface</item>
+        <item name="textSecondary">?attr/colorOnSurfaceVariant</item>
+        <item name="textHint">?attr/colorOnSurfaceVariant</item>
+        <item name="dividerColor">?attr/colorOutline</item>
+
+        <!-- Material 3 形状 -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Material3.Corner.Medium</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Material3.Corner.Large</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Material3.Corner.ExtraLarge</item>
+    </style>
+
+    <!-- 全屏主题（用于主界面） -->
+    <!-- windowBackground 使用带 Logo 的启动画面，系统 Starting Window 会显示此背景 -->
+    <!-- 这样冷启动和切换后台返回时看到的是 App Logo，而非空白 -->
+    <style name="FullScreenTheme" parent="Theme.raLaunch">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+        <!-- 忽略刘海屏设置 -->
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <!-- 隐藏状态栏 -->
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+
+    <!-- 游戏全屏主题（用于游戏场景，黑色背景） -->
+    <style name="GameTheme" parent="Theme.raLaunch">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- 使用黑色背景，避免启动时白屏，且更适合游戏场景 -->
+        <item name="android:windowBackground">@android:color/black</item>
+        <!-- 忽略刘海屏设置 -->
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <!-- 隐藏状态栏 -->
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+</resources>
